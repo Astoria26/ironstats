@@ -5,40 +5,40 @@
 :root{--bg:#f5f3ef;--bg2:#fff;--bg3:#f0ede8;--tx:#1a1a1a;--tx2:#5a5a5a;--tx3:#8a8a8a;--bd:#e5e1da;--sw:#0ea5e9;--bk:#ea580c;--rn:#16a34a;--acc:#2563eb;--gold:#b8860b;--silver:#6b7280;--bronze:#a0522d}
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
 .hdr{background:var(--bg2);border-bottom:1px solid var(--bd);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.logo{font-size:22px;font-weight:800;color:var(--acc)}.logo span{color:var(--rn)}.sub{font-size:11px;color:var(--tx3);margin-left:8px}
+.logo{font-size:22px;font-weight:800;color:var(--acc)}.logo span{color:var(--rn)}.sub{font-size:13px;color:var(--tx3);margin-left:8px}
 nav{display:flex;gap:2px;background:var(--bg3);border-radius:8px;padding:3px}
-nav button{padding:7px 12px;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:11px;font-family:inherit;background:transparent;color:var(--tx2);transition:all .2s}
+nav button{padding:7px 12px;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;font-family:inherit;background:transparent;color:var(--tx2);transition:all .2s}
 nav button.on{background:var(--acc);color:#fff}
 .cnt{padding:16px 20px;max-width:1400px;margin:0 auto}
 .card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:12px}
 .sel{background:var(--bg2);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:7px 10px;font-family:inherit;font-size:12px;cursor:pointer}
 .stat{background:var(--bg3);border-radius:8px;padding:10px;text-align:center}
-.sv{font-size:17px;font-weight:800;font-family:'Barlow Condensed',sans-serif}
-.sl{font-size:9px;color:var(--tx3);margin-top:2px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-table{width:100%;border-collapse:collapse;font-size:11px}
-th{padding:7px 5px;text-align:left;border-bottom:2px solid var(--bd);color:var(--tx3);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;white-space:nowrap;user-select:none}
+.sv{font-size:20px;font-weight:800;font-family:'Barlow Condensed',sans-serif}
+.sl{font-size:11px;color:var(--tx3);margin-top:2px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{padding:7px 5px;text-align:left;border-bottom:2px solid var(--bd);color:var(--tx3);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;white-space:nowrap;user-select:none}
 td{padding:6px 5px;border-bottom:1px solid var(--bd);white-space:nowrap}tr:hover td{background:var(--bg3)}
 .sw{color:var(--sw)}.bk{color:var(--bk)}.rn{color:var(--rn)}.mono{font-family:'Barlow Condensed',monospace}
-.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;font-weight:700}
 .b-70{background:#eff6ff;color:var(--acc);border:1px solid #bfdbfe}.top3{background:#f0fdf4}
 .back{background:none;border:none;color:var(--acc);cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;padding:0;margin-bottom:12px}
 .overflow{overflow-x:auto}
-.tgl{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg2);cursor:pointer;font-size:11px;font-weight:600;color:var(--tx3);transition:all .15s;font-family:inherit}
+.tgl{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg2);cursor:pointer;font-size:13px;font-weight:600;color:var(--tx3);transition:all .15s;font-family:inherit}
 .tgl.on{border-color:var(--acc);background:#eff6ff;color:var(--acc)}
-.hero{text-align:center;padding:36px 20px 24px}.hero h1{font-size:28px;font-weight:800;margin-bottom:6px}.hero p{font-size:14px;color:var(--tx2);max-width:560px;margin:0 auto 20px}
+.hero{text-align:center;padding:36px 20px 24px}.hero h1{font-size:32px;font-weight:800;margin-bottom:6px}.hero p{font-size:16px;color:var(--tx2);max-width:560px;margin:0 auto 20px}
 .feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px}
 .feat-card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;text-align:center}
 .feat-card:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
-.feat-card .icon{font-size:24px;margin-bottom:8px}.feat-card h3{font-size:13px;font-weight:700;margin-bottom:3px}.feat-card p{font-size:11px;color:var(--tx2)}
+.feat-card .icon{font-size:24px;margin-bottom:8px}.feat-card h3{font-size:13px;font-weight:700;margin-bottom:3px}.feat-card p{font-size:13px;color:var(--tx2)}
 .ci{flex:1;background:var(--bg3);border-radius:8px;padding:8px 10px;min-width:140px}
-.tip{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:8px}
-.wx{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:var(--bg3);border-radius:6px;font-size:11px;color:var(--tx2);margin:2px}
+.tip{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;font-size:13px;color:#92400e;margin-top:8px}
+.wx{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:var(--bg3);border-radius:6px;font-size:13px;color:var(--tx2);margin:2px}
 a{color:var(--acc)}
 .sim-input{background:var(--bg2);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-family:inherit;font-size:14px;width:100px;text-align:center}
-</style></head><body>
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script></head><body>
 <div class="hdr"><div style="display:flex;align-items:baseline;gap:4px">
 <span class="logo">Iron<span>Stats</span></span><span class="sub">Ironman 70.3 Brasil · Resultados e análise</span>
-</div><nav id="nav"></nav></div>
+</div><div style="display:flex;align-items:center;gap:8px"><nav id="nav"></nav><button id="langBtn" class="tgl on" onclick="toggleLang()" style="font-size:11px;padding:4px 10px">EN</button></div></div>
 <div class="cnt" id="app"></div>
 <script>
 var D=/*DATA_PLACEHOLDER*/;
@@ -54,10 +54,38 @@ function av(a){var f=a.filter(function(x){return x&&x>0});if(!f.length)return 0;
 function aAgs(){var o={};RI.forEach(function(id){R[id].forEach(function(r){if(r[5]&&r[3])o[r[3]]=1})});return Object.keys(o).sort()}
 function getCi(id){var c=id.substring(0,2);if(c==="rj"&&parseInt(id.substring(2))<=22)return CI.rj_old;return CI[c]||CI.sp}
 
+
+var LG="pt";
+var TX={
+pt:{home:"Home",races:"Provas",results:"Resultados",podium:"Pódio/AG",compare:"Comparador",trends:"Tendências",sim:"Simulador",
+heroTitle:"'+L('heroTitle')+'",heroSub:"'+L('heroSub')+'",
+racesTitle:"Provas",resultsBack:"← Provas",finished:"Finalizaram",avgPace:"Pace médio",avgSpeed:"Vel média",all:"Todos",
+podiumTitle:"Pódio / AG",compareTitle:"Comparador",trendsTitle:"Tendências",simTitle:"Simulador de Meta",
+simSub:"'+L('simSub')+'",
+posTarget:"Posição alvo:",timeNeeded:"Tempo necessário por posição",conditions:"Condições de prova",
+simResult:"Resultado da simulação",totalEst:"'+L('totalEst')+'",position:"Sua posição",posNat:"Pos nat",posBike:"Pos bike",posRun:"Pos cor",
+simulate:"Simular",nat:"Nat",bike:"Bike",cor:"Cor",pace:"Pace",total:"Total",pos:"Pos",year:"Ano",athletes:"Atletas",
+date:"Data",temp:"Temp",humidity:"Umid.",altitude:"Alt.",water:"Água",condition:"Condição",wind:"Vento",
+vsLast:"vs anterior",faster:"mais rápido",slower:"mais lento",stable:"estável",noData:"sem dados",
+race:"Prova",category:"Categoria",swimInput:"Natação (mm:ss)",bikeInput:"Bike (h:mm:ss)",runInput:"Corrida (h:mm:ss)"},
+en:{home:"Home",races:"Races",results:"Results",podium:"Podium/AG",compare:"Compare",trends:"Trends",sim:"Simulator",
+heroTitle:"70.3 race results and analysis in Brazil",heroSub:"Splits by discipline, edition comparison, historical trends and position simulator. Data from 2022 to 2025.",
+racesTitle:"Races",resultsBack:"← Races",finished:"Finished",avgPace:"Avg pace",avgSpeed:"Avg speed",all:"All",
+podiumTitle:"Podium / AG",compareTitle:"Compare",trendsTitle:"Trends",simTitle:"Goal Simulator",
+simSub:"Enter your times by discipline and see what position you would finish in each edition.",
+posTarget:"Target position:",timeNeeded:"Time needed by position",conditions:"Race conditions",
+simResult:"Simulation result",totalEst:"Estimated total time:",position:"Your position",posNat:"Swim pos",posBike:"Bike pos",posRun:"Run pos",
+simulate:"Simulate",nat:"Swim",bike:"Bike",cor:"Run",pace:"Pace",total:"Total",pos:"Pos",year:"Year",athletes:"Athletes",
+date:"Date",temp:"Temp",humidity:"Humid.",altitude:"Alt.",water:"Water",condition:"Condition",wind:"Wind",
+vsLast:"vs previous",faster:"faster",slower:"slower",stable:"stable",noData:"no data",
+race:"Race",category:"Category",swimInput:"Swim (mm:ss)",bikeInput:"Bike (h:mm:ss)",runInput:"Run (h:mm:ss)"}
+};
+function L(k){return TX[LG][k]||k}
+function toggleLang(){LG=LG==="pt"?"en":"pt";document.getElementById("langBtn").textContent=LG==="pt"?"EN":"PT";ren()}
 var V="home",SR=null,AG="all",SC=5,SD=1,CR=null,TP=5;
 
 function ren(){
-  var tabs=["Home","Provas","Resultados","Pódio/AG","Comparar","Tendências","Simulador"];
+  var tabs=[L("home"),L("races"),L("results"),L("podium"),L("compare"),L("trends"),L("sim")];
   var views=["home","races","results","podium","compare","trends","sim"];
   document.getElementById("nav").innerHTML=tabs.map(function(t,i){
     return "<button class='"+(V===views[i]?"on":"")+"' onclick=\"V='"+views[i]+"';ren()\">"+t+"</button>"
@@ -69,19 +97,19 @@ function ren(){
 
 function rHome(el){
   var tot=0;RI.forEach(function(id){tot+=R[id].length});
-  el.innerHTML="<div class='hero'><h1>Resultados e análise de provas 70.3 no Brasil</h1>"+
-    "<p>Splits por modalidade, comparativo entre edições, evolução histórica e simulador de posição. Dados de 2022 a 2025.</p>"+
+  el.innerHTML="<div class='hero'><h1>'+L('heroTitle')+'</h1>"+
+    "<p>'+L('heroSub')+'</p>"+
     "<div style='display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px'>"+
     "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--acc)'>"+RI.length+"</div><div class='sl'>Edições</div></div>"+
     "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--rn)'>"+tot.toLocaleString()+"</div><div class='sl'>Resultados</div></div>"+
     "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--bk)'>2022-25</div><div class='sl'>Período</div></div></div></div>"+
     "<div class='feat'>"+
-    "<div class='feat-card' onclick=\"V='races';ren()\"><h3>Provas</h3><p>Percursos, altimetria e condições</p></div>"+
-    "<div class='feat-card' onclick=\"V='results';SR=RI[0];ren()\"><h3>Resultados</h3><p>Splits, paces e filtro por categoria</p></div>"+
-    "<div class='feat-card' onclick=\"V='podium';ren()\"><h3>Pódio / AG</h3><p>Tempos por posição e modalidade</p></div>"+
-    "<div class='feat-card' onclick=\"V='compare';ren()\"><h3>Comparador</h3><p>Provas e edições lado a lado</p></div>"+
-    "<div class='feat-card' onclick=\"V='trends';ren()\"><h3>Tendências</h3><p>Evolução dos tempos ano a ano</p></div>"+
-    "<div class='feat-card' onclick=\"V='sim';ren()\"><h3>Simulador</h3><p>Preveja sua posição com base nos seus tempos</p></div></div>"+
+    "<div class='feat-card' onclick=\"V='races';ren()\"><h3>'+L('races')+'</h3><p>'+(LG==='pt'?'Percursos, altimetria e condições':'Courses, elevation and conditions')+'</p></div>"+
+    "<div class='feat-card' onclick=\"V='results';SR=RI[0];ren()\"><h3>'+L('results')+'</h3><p>'+(LG==='pt'?'Splits, paces e filtro por categoria':'Splits, paces and AG filter')+'</p></div>"+
+    "<div class='feat-card' onclick=\"V='podium';ren()\"><h3>'+L('podium')+'</h3><p>'+(LG==='pt'?'Tempos por posição e modalidade':'Times by position and discipline')+'</p></div>"+
+    "<div class='feat-card' onclick=\"V='compare';ren()\"><h3>'+L('compare')+'</h3><p>'+(LG==='pt'?'Provas e edições lado a lado':'Races and editions side by side')+'</p></div>"+
+    "<div class='feat-card' onclick=\"V='trends';ren()\"><h3>'+L('trends')+'</h3><p>'+(LG==='pt'?'Evolução dos tempos ano a ano':'Year over year time evolution')+'</p></div>"+
+    "<div class='feat-card' onclick=\"V='sim';ren()\"><h3>'+L('sim')+'</h3><p>'+(LG==='pt'?'Preveja sua posição':'Predict your finishing position')+'</p></div></div>"+
     "";
 }
 
@@ -97,14 +125,82 @@ function rRaces(el){
   h+="</div>";
   var ids=SE[rCity],ci=getCi(ids[ids.length-1]);
   h+="<div class='card'><div style='display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px'>";
-  h+="<div class='ci'><b style='color:var(--sw)'>NAT</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.swimDesc+"</span></div>";
-  h+="<div class='ci'><b style='color:var(--bk)'>BIKE</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.bikeDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.bikeElev+"m</div>"+"</div>";
-  h+="<div class='ci'><b style='color:var(--rn)'>COR</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.runDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.runElev+"m</div></div></div>";
+  h+="<div class='ci'><b style='color:var(--sw)'>NAT</b> <span style='font-size:13px;color:var(--tx2)'>"+ci.swimDesc+"</span></div>";
+  h+="<div class='ci'><b style='color:var(--bk)'>BIKE</b> <span style='font-size:13px;color:var(--tx2)'>"+ci.bikeDesc+"</span><div style='font-size:13px;font-weight:700;color:var(--bk)'>↗"+ci.bikeElev+"m</div>"+"</div>";
+  h+="<div class='ci'><b style='color:var(--rn)'>COR</b> <span style='font-size:13px;color:var(--tx2)'>"+ci.runDesc+"</span><div style='font-size:13px;font-weight:700;color:var(--bk)'>↗"+ci.runElev+"m</div></div></div>";
   h+="<div class='overflow'><table><tr><th>Ano</th><th>Atletas</th><th>Data</th><th>Temp</th><th>Umid.</th><th>Alt.</th><th>Água</th><th>Vento</th><th>Condição</th></tr>";
-  ids.forEach(function(id){var m=M[id],w=W[id]||{};
+  ids.slice().reverse().forEach(function(id){var m=M[id],w=W[id]||{};
     h+="<tr style='cursor:pointer' onclick=\"SR='"+id+"';V='results';ren()\"><td style='font-weight:800;font-size:14px'>"+m.y+"</td><td>"+R[id].length+"</td><td>"+(w.date||"-")+"</td><td>"+(w.temp||"-")+"°C</td><td>"+(w.hum||"-")+"%</td><td>"+(w.alt||"-")+"m</td><td>"+(w.agua||"-")+"°C</td><td>"+(w.vento||"-")+"</td><td>"+(w.chuva||"-")+"</td></tr>"});
   h+="</table></div></div>";
+  // Distribution section
+  h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Distribuição de tempos</div>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap'><span style='font-size:12px;color:var(--tx3)'>Categoria:</span><select class='sel' id='distAG' onchange='renderDist()'><option value='all'>Todos</option></select></div>";
+  h+="<div style='display:grid;grid-template-columns:1fr 1fr;gap:12px'>";
+  h+="<div style='position:relative;height:220px'><canvas id='distTotal'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distSplits'></canvas></div>";
+  h+="</div></div>";
   el.innerHTML=h;
+  // Populate AG selector
+  var distSel=document.getElementById('distAG');
+  if(distSel){
+    var dags=[];
+    ids.forEach(function(id){R[id].forEach(function(r){if(r[5]&&r[3]&&dags.indexOf(r[3])<0)dags.push(r[3])})});
+    dags.sort();
+    dags.forEach(function(ag){var o=document.createElement('option');o.value=ag;o.text=ag;distSel.appendChild(o)});
+  }
+  window._distCity=rCity;
+  renderDist();
+}
+
+function renderDist(){
+  var city=window._distCity;if(!city)return;
+  var ids=SE[city];if(!ids)return;
+  var ag=document.getElementById('distAG')?document.getElementById('distAG').value:'all';
+  // Merge all years for this city
+  var allFin=[];
+  ids.forEach(function(id){
+    R[id].forEach(function(r){
+      if(r[5]&&(ag==='all'||r[3]===ag))allFin.push(r);
+    });
+  });
+  if(!allFin.length)return;
+  // Build histogram for total time
+  var totals=allFin.map(function(r){return r[5]/60}); // in minutes
+  var minT=Math.floor(Math.min.apply(null,totals)/10)*10;
+  var maxT=Math.ceil(Math.max.apply(null,totals)/10)*10;
+  var bins=[],labels=[];
+  for(var i=minT;i<maxT;i+=10){bins.push(0);labels.push(Math.floor(i/60)+'h'+String(i%60).padStart(2,'0'))}
+  totals.forEach(function(t){var idx=Math.min(Math.floor((t-minT)/10),bins.length-1);if(idx>=0)bins[idx]++});
+  // Destroy old charts
+  try{if(window._distChart1)window._distChart1.destroy()}catch(e){}
+  try{if(window._distChart2)window._distChart2.destroy()}catch(e){}
+  try{
+    var ctx1=document.getElementById('distTotal');
+    if(ctx1){
+      window._distChart1=new Chart(ctx1,{type:'bar',
+        data:{labels:labels,datasets:[{label:'Atletas',data:bins,backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Tempo total (todos os anos)',font:{size:13}}},scales:{x:{title:{display:false}},y:{title:{display:true,text:'Atletas'}}}}
+      });
+    }
+    // Splits distribution - overlay 3 histograms
+    var m=M[ids[0]];
+    var sData=allFin.filter(function(r){return r[6]}).map(function(r){return r[6]/60});
+    var bData=allFin.filter(function(r){return r[7]}).map(function(r){return r[7]/60});
+    var rData=allFin.filter(function(r){return r[8]}).map(function(r){return r[8]/60});
+    // Use fixed bins for splits
+    var sBins=[],bBins=[],rBins=[],sLab=[];
+    var sMin=Math.floor(Math.min.apply(null,sData)/5)*5,sMax=Math.ceil(Math.max.apply(null,sData)/5)*5;
+    for(var i=sMin;i<sMax;i+=5){sBins.push(0);sLab.push(i+'m')}
+    sData.forEach(function(t){var idx=Math.min(Math.floor((t-sMin)/5),sBins.length-1);if(idx>=0)sBins[idx]++});
+    var ctx2=document.getElementById('distSplits');
+    if(ctx2){
+      // Show swim distribution  
+      window._distChart2=new Chart(ctx2,{type:'bar',
+        data:{labels:sLab,datasets:[{label:'Natação',data:sBins,backgroundColor:'#0ea5e944',borderColor:'#0ea5e9',borderWidth:1}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top'},title:{display:true,text:'Natação (todos os anos)',font:{size:13}}},scales:{y:{title:{display:true,text:'Atletas'}}}}
+      });
+    }
+  }catch(e){console.log('Dist chart error:',e)}
 }
 
 function rResults(el){
@@ -113,14 +209,15 @@ function rResults(el){
   var f=raw.slice();if(AG!=="all")f=f.filter(function(r){return r[3]===AG});
   f.sort(function(x,y){var a=x[SC],b=y[SC];if(a==null)return 1;if(b==null)return-1;return SD*(a>b?1:a<b?-1:0)});
   var fin=raw.filter(function(r){return r[5]});
+  var finAG=(AG!=="all")?fin.filter(function(r){return r[3]===AG}):fin;
   var h="<button class='back' onclick=\"V='races';ren()\">← Provas</button>";
   h+="<div style='display:flex;align-items:baseline;gap:8px;margin-bottom:10px;flex-wrap:wrap'>";
   h+="<h2 style='font-size:17px;font-weight:800'>"+m.n+" "+m.y+"</h2>"+wxBadge(SR)+"</div>";
   h+="<div style='display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap'>";
   h+="<div class='stat'><div class='sv'>"+fin.length+"</div><div class='sl'>Finalizaram</div></div>";
-  h+="<div class='stat'><div class='sv sw'>"+sP(av(fin.map(function(r){return r[6]})),m.sk)+"</div><div class='sl'>Pace nat médio</div></div>";
-  h+="<div class='stat'><div class='sv bk'>"+bS(av(fin.map(function(r){return r[7]})),m.bk)+"</div><div class='sl'>Vel bike média</div></div>";
-  h+="<div class='stat'><div class='sv rn'>"+rP(av(fin.map(function(r){return r[8]})),m.rk)+"</div><div class='sl'>Pace cor médio</div></div></div>";
+  h+="<div class='stat'><div class='sv sw'>"+sP(av(finAG.map(function(r){return r[6]})),m.sk)+"</div><div class='sl'>Pace nat médio</div></div>";
+  h+="<div class='stat'><div class='sv bk'>"+bS(av(finAG.map(function(r){return r[7]})),m.bk)+"</div><div class='sl'>Vel bike média</div></div>";
+  h+="<div class='stat'><div class='sv rn'>"+rP(av(finAG.map(function(r){return r[8]})),m.rk)+"</div><div class='sl'>Pace cor médio</div></div></div>";
   h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap'>";
   h+="<select class='sel' onchange=\"SR=this.value;AG='all';ren()\">";
   RI.forEach(function(id){h+="<option value='"+id+"'"+(SR===id?" selected":"")+">"+M[id].c.split(" ")[0]+" "+M[id].y+"</option>"});
@@ -137,21 +234,21 @@ function rResults(el){
     h+="<td style='font-weight:600;max-width:130px;overflow:hidden;text-overflow:ellipsis'>"+a[0]+"</td>";
     h+="<td>"+a[3]+"</td><td style='font-weight:600;"+(t3?"color:var(--gold)":"")+"'>"+a[4]+"</td>";
     h+="<td class='mono' style='font-weight:700'>"+s2t(a[5])+"</td>";
-    h+="<td class='mono sw'>"+s2t(a[6])+"</td><td class='sw' style='font-size:10px'>"+sP(a[6],m.sk)+"</td>";
-    h+="<td style='font-size:10px;color:var(--tx3)'>"+tT(a[9])+"</td><td class='mono bk'>"+s2t(a[7])+"</td><td class='bk' style='font-size:10px'>"+bS(a[7],m.bk)+"</td>";
-    h+="<td style='font-size:10px;color:var(--tx3)'>"+tT(a[10])+"</td><td class='mono rn'>"+s2t(a[8])+"</td><td class='rn' style='font-size:10px'>"+rP(a[8],m.rk)+"</td></tr>"});
+    h+="<td class='mono sw'>"+s2t(a[6])+"</td><td class='sw' style='font-size:12px'>"+sP(a[6],m.sk)+"</td>";
+    h+="<td style='font-size:12px;color:var(--tx3)'>"+tT(a[9])+"</td><td class='mono bk'>"+s2t(a[7])+"</td><td class='bk' style='font-size:12px'>"+bS(a[7],m.bk)+"</td>";
+    h+="<td style='font-size:12px;color:var(--tx3)'>"+tT(a[10])+"</td><td class='mono rn'>"+s2t(a[8])+"</td><td class='rn' style='font-size:12px'>"+rP(a[8],m.rk)+"</td></tr>"});
   h+="</tbody></table>";
-  if(f.length>300)h+="<div style='padding:8px;text-align:center;color:var(--tx3);font-size:11px'>300 de "+f.length+"</div>";
+  if(f.length>300)h+="<div style='padding:8px;text-align:center;color:var(--tx3);font-size:13px'>300 de "+f.length+"</div>";
   h+="</div>";el.innerHTML=h;
 }
 
 function posTbl(fin,m,title){
   var t=fin.map(function(r){return r[5]}),s=fin.map(function(r){return r[6]}),b=fin.map(function(r){return r[7]}),rn=fin.map(function(r){return r[8]}),t1=fin.map(function(r){return r[9]}),t2=fin.map(function(r){return r[10]});
   var ps=[1,3,5,10,20,50],lb=["1º lugar","3º lugar","5º lugar","10º lugar","20º lugar","50º lugar"];
-  var h="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>"+title+"</div><div class='overflow'><table>";
+  var h="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>"+title+"</div><div class='overflow'><table>";
   h+="<tr><th>Posição</th><th>Total</th><th class='sw'>Nat</th><th class='sw'>Pace</th><th class='bk'>Bike</th><th class='bk'>km/h</th><th style='color:var(--tx3)'>T1</th><th style='color:var(--tx3)'>T2</th><th class='rn'>Cor</th><th class='rn'>Pace</th></tr>";
   ps.forEach(function(p,i){if(p>fin.length)return;
-    h+="<tr><td style='font-weight:600;font-size:12px'>"+lb[i]+"</td><td class='mono' style='font-weight:700'>"+s2t(nth(t,p))+"</td><td class='mono sw'>"+s2t(nth(s,p))+"</td><td class='sw' style='font-size:10px'>"+sP(nth(s,p),m.sk)+"</td><td class='mono bk'>"+s2t(nth(b,p))+"</td><td class='bk' style='font-size:10px'>"+bS(nth(b,p),m.bk)+"</td><td style='color:var(--tx3);font-size:10px'>"+tT(nth(t1,p))+"</td><td style='color:var(--tx3);font-size:10px'>"+tT(nth(t2,p))+"</td><td class='mono rn'>"+s2t(nth(rn,p))+"</td><td class='rn' style='font-size:10px'>"+rP(nth(rn,p),m.rk)+"</td></tr>"});
+    h+="<tr><td style='font-weight:600;font-size:12px'>"+lb[i]+"</td><td class='mono' style='font-weight:700'>"+s2t(nth(t,p))+"</td><td class='mono sw'>"+s2t(nth(s,p))+"</td><td class='sw' style='font-size:12px'>"+sP(nth(s,p),m.sk)+"</td><td class='mono bk'>"+s2t(nth(b,p))+"</td><td class='bk' style='font-size:12px'>"+bS(nth(b,p),m.bk)+"</td><td style='color:var(--tx3);font-size:12px'>"+tT(nth(t1,p))+"</td><td style='color:var(--tx3);font-size:12px'>"+tT(nth(t2,p))+"</td><td class='mono rn'>"+s2t(nth(rn,p))+"</td><td class='rn' style='font-size:12px'>"+rP(nth(rn,p),m.rk)+"</td></tr>"});
   return h+"</table></div></div>";
 }
 
@@ -169,9 +266,9 @@ function rPodium(el){
   h+="</select></div>";
   if(!fin.length){el.innerHTML=h+"<div style='color:var(--tx3);text-align:center;padding:40px'>Sem dados</div>";return}
   var mc=["var(--gold)","var(--silver)","var(--bronze)"];
-  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Pódio — "+AG+"</div>";
+  h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Pódio — "+AG+"</div>";
   fin.slice(0,3).forEach(function(a,i){
-    h+="<div style='display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin-bottom:3px;"+(i===0?"background:#fef9c3;border-radius:6px;border:1px solid #fde68a":"")+"'><div style='display:flex;gap:8px;align-items:center'><span style='font-weight:800;font-size:16px;color:"+mc[i]+"'>"+(i+1)+"º</span><div><div style='font-size:12px;font-weight:600'>"+a[0]+"</div></div></div><div style='text-align:right'><div class='mono' style='font-weight:800;font-size:15px'>"+s2t(a[5])+"</div><div style='font-size:9px;color:var(--tx3)'>Nat"+sP(a[6],m.sk)+" Bike"+bS(a[7],m.bk)+" Cor"+rP(a[8],m.rk)+"</div></div></div>"});
+    h+="<div style='display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin-bottom:3px;"+(i===0?"background:#fef9c3;border-radius:6px;border:1px solid #fde68a":"")+"'><div style='display:flex;gap:8px;align-items:center'><span style='font-weight:800;font-size:16px;color:"+mc[i]+"'>"+(i+1)+"º</span><div><div style='font-size:12px;font-weight:600'>"+a[0]+"</div></div></div><div style='text-align:right'><div class='mono' style='font-weight:800;font-size:15px'>"+s2t(a[5])+"</div><div style='font-size:11px;color:var(--tx3)'>Nat"+sP(a[6],m.sk)+" Bike"+bS(a[7],m.bk)+" Cor"+rP(a[8],m.rk)+"</div></div></div>"});
   h+="</div>";
   h+=posTbl(fin,m,"Tempo necessário por posição — "+AG);
   el.innerHTML=h;
@@ -194,20 +291,88 @@ function rCompare(el){
   }).filter(Boolean);
   if(!all.length){el.innerHTML=h+"<div style='color:var(--tx3);text-align:center;padding:40px'>Selecione provas</div>";return}
   var ps=[1,3,5,10,20],lb=["1º","3º","5º","10º","20º"];
-  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:10px'>Tempo necessário por posição — "+(AG!=="all"?AG:"Geral")+"</div><div class='overflow'><table><tr><th>Pos</th>";
-  all.forEach(function(r){h+="<th>"+r.m.c.split(' ')[0]+" "+r.m.y+"</th><th class='sw'>Nat</th><th style='color:var(--tx3)'>T1</th><th class='bk'>Bike</th><th style='color:var(--tx3)'>T2</th><th class='rn'>Cor</th>"});
+  h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:10px'>Tempo necessário por posição — "+(AG!=="all"?AG:"Geral")+"</div><div class='overflow'><table><tr><th>Pos</th>";
+  all.forEach(function(r){h+="<th>"+r.m.c.split(' ')[0]+" "+r.m.y+"</th><th class='sw'>Nat</th><th class='sw'>Pace</th><th style='color:var(--tx3)'>T1</th><th class='bk'>Bike</th><th class='bk'>km/h</th><th style='color:var(--tx3)'>T2</th><th class='rn'>Cor</th><th class='rn'>Pace</th>"});
   h+="</tr>";
   ps.forEach(function(p,i){h+="<tr><td style='font-weight:600'>"+lb[i]+"</td>";
-    all.forEach(function(r){if(p>r.n){h+="<td colspan='4' style='color:var(--tx3)'>-</td>";return}
-      h+="<td class='mono' style='font-weight:700'>"+s2t(nth(r.t,p))+"</td><td class='sw' style='font-size:10px'>"+sP(nth(r.s,p),r.m.sk)+"</td><td style='font-size:10px;color:var(--tx3)'>"+tT(nth(r.t1,p))+"</td><td class='bk' style='font-size:10px'>"+bS(nth(r.b,p),r.m.bk)+"</td><td style='font-size:10px;color:var(--tx3)'>"+tT(nth(r.t2,p))+"</td><td class='rn' style='font-size:10px'>"+rP(nth(r.r,p),r.m.rk)+"</td>"});
+    all.forEach(function(r){if(p>r.n){h+="<td colspan='9' style='color:var(--tx3)'>-</td>";return}
+      h+="<td class='mono' style='font-weight:700'>"+s2t(nth(r.t,p))+"</td><td class='mono sw'>"+s2t(nth(r.s,p))+"</td><td class='sw'>"+sP(nth(r.s,p),r.m.sk)+"</td><td style='color:var(--tx3)'>"+tT(nth(r.t1,p))+"</td><td class='mono bk'>"+s2t(nth(r.b,p))+"</td><td class='bk'>"+bS(nth(r.b,p),r.m.bk)+"</td><td style='color:var(--tx3)'>"+tT(nth(r.t2,p))+"</td><td class='mono rn'>"+s2t(nth(r.r,p))+"</td><td class='rn'>"+rP(nth(r.r,p),r.m.rk)+"</td>"});
     h+="</tr>"});
   h+="</table></div></div>";
   // Weather comparison
-  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Condições de prova</div><div class='overflow'><table><tr><th>Prova</th><th>Data</th><th>Temp</th><th>Umid.</th><th>Alt.</th><th>Água</th><th>Condição</th><th>Vento</th></tr>";
+  h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Condições de prova</div><div class='overflow'><table><tr><th>Prova</th><th>Data</th><th>Temp</th><th>Umid.</th><th>Alt.</th><th>Água</th><th>Condição</th><th>Vento</th></tr>";
   all.forEach(function(r){var w=W[r.id]||{};
-    h+="<tr><td style='font-weight:600'>"+r.m.c.split(' ')[0]+" "+r.m.y+"</td><td>"+(w.date||"-")+"</td><td>"+(w.temp||"-")+"°C</td><td>"+(w.hum||"-")+"%</td><td>"+(w.alt||"-")+"m</td><td>"+(w.agua||"-")+"°C</td><td>"+(w.chuva||"-")+"</td></tr>"});
+    h+="<tr><td style='font-weight:600'>"+r.m.c.split(' ')[0]+" "+r.m.y+"</td><td>"+(w.date||"-")+"</td><td>"+(w.temp||"-")+"°C</td><td>"+(w.hum||"-")+"%</td><td>"+(w.alt||"-")+"m</td><td>"+(w.agua||"-")+"°C</td><td>"+(w.chuva||"-")+"</td><td>"+(w.vento||"-")+"</td></tr>"});
   h+="</table></div></div>";
+  // Distribution section
+  h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Distribuição de tempos</div>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap'><span style='font-size:12px;color:var(--tx3)'>Categoria:</span><select class='sel' id='distAG' onchange='renderDist()'><option value='all'>Todos</option></select></div>";
+  h+="<div style='display:grid;grid-template-columns:1fr 1fr;gap:12px'>";
+  h+="<div style='position:relative;height:220px'><canvas id='distTotal'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distSplits'></canvas></div>";
+  h+="</div></div>";
   el.innerHTML=h;
+  // Populate AG selector
+  var distSel=document.getElementById('distAG');
+  if(distSel){
+    var dags=[];
+    ids.forEach(function(id){R[id].forEach(function(r){if(r[5]&&r[3]&&dags.indexOf(r[3])<0)dags.push(r[3])})});
+    dags.sort();
+    dags.forEach(function(ag){var o=document.createElement('option');o.value=ag;o.text=ag;distSel.appendChild(o)});
+  }
+  window._distCity=rCity;
+  renderDist();
+}
+
+function renderDist(){
+  var city=window._distCity;if(!city)return;
+  var ids=SE[city];if(!ids)return;
+  var ag=document.getElementById('distAG')?document.getElementById('distAG').value:'all';
+  // Merge all years for this city
+  var allFin=[];
+  ids.forEach(function(id){
+    R[id].forEach(function(r){
+      if(r[5]&&(ag==='all'||r[3]===ag))allFin.push(r);
+    });
+  });
+  if(!allFin.length)return;
+  // Build histogram for total time
+  var totals=allFin.map(function(r){return r[5]/60}); // in minutes
+  var minT=Math.floor(Math.min.apply(null,totals)/10)*10;
+  var maxT=Math.ceil(Math.max.apply(null,totals)/10)*10;
+  var bins=[],labels=[];
+  for(var i=minT;i<maxT;i+=10){bins.push(0);labels.push(Math.floor(i/60)+'h'+String(i%60).padStart(2,'0'))}
+  totals.forEach(function(t){var idx=Math.min(Math.floor((t-minT)/10),bins.length-1);if(idx>=0)bins[idx]++});
+  // Destroy old charts
+  try{if(window._distChart1)window._distChart1.destroy()}catch(e){}
+  try{if(window._distChart2)window._distChart2.destroy()}catch(e){}
+  try{
+    var ctx1=document.getElementById('distTotal');
+    if(ctx1){
+      window._distChart1=new Chart(ctx1,{type:'bar',
+        data:{labels:labels,datasets:[{label:'Atletas',data:bins,backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Tempo total (todos os anos)',font:{size:13}}},scales:{x:{title:{display:false}},y:{title:{display:true,text:'Atletas'}}}}
+      });
+    }
+    // Splits distribution - overlay 3 histograms
+    var m=M[ids[0]];
+    var sData=allFin.filter(function(r){return r[6]}).map(function(r){return r[6]/60});
+    var bData=allFin.filter(function(r){return r[7]}).map(function(r){return r[7]/60});
+    var rData=allFin.filter(function(r){return r[8]}).map(function(r){return r[8]/60});
+    // Use fixed bins for splits
+    var sBins=[],bBins=[],rBins=[],sLab=[];
+    var sMin=Math.floor(Math.min.apply(null,sData)/5)*5,sMax=Math.ceil(Math.max.apply(null,sData)/5)*5;
+    for(var i=sMin;i<sMax;i+=5){sBins.push(0);sLab.push(i+'m')}
+    sData.forEach(function(t){var idx=Math.min(Math.floor((t-sMin)/5),sBins.length-1);if(idx>=0)sBins[idx]++});
+    var ctx2=document.getElementById('distSplits');
+    if(ctx2){
+      // Show swim distribution  
+      window._distChart2=new Chart(ctx2,{type:'bar',
+        data:{labels:sLab,datasets:[{label:'Natação',data:sBins,backgroundColor:'#0ea5e944',borderColor:'#0ea5e9',borderWidth:1}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top'},title:{display:true,text:'Natação (todos os anos)',font:{size:13}}},scales:{y:{title:{display:true,text:'Atletas'}}}}
+      });
+    }
+  }catch(e){console.log('Dist chart error:',e)}
 }
 
 function rTrends(el){
@@ -218,29 +383,31 @@ function rTrends(el){
   ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+"</option>"});
   h+="</select><select class='sel' id='tCity' onchange=\"window._tCity=this.value;ren()\">";
   Object.keys(SE).forEach(function(c){h+="<option value='"+c+"'"+(window._tCity===c||(!window._tCity&&c===Object.keys(SE)[0])?" selected":"")+">"+c+"</option>"});
-  h+="</select><span style='font-size:11px;color:var(--tx3)'>Posição alvo:</span>";
+  h+="</select><span style='font-size:13px;color:var(--tx3)'>Posição alvo:</span>";
   [1,3,5,10,20,50].forEach(function(p){h+="<button class='tgl "+(TP===p?"on":"")+"' onclick=\"TP="+p+";ren()\">Top "+p+"</button>"});
   h+="</div>";
-  var selCity=window._tCity||Object.keys(SE)[0];
+  window._chartData=[];var selCity=window._tCity||Object.keys(SE)[0];
   [selCity].forEach(function(city){
     var ids=SE[city];
     h+="<div class='card'><h3 style='font-size:14px;font-weight:700;margin-bottom:10px'>"+city+" — "+AG+" — Top "+TP+"</h3>";
-    h+="<div class='overflow'><table><tr><th>Ano</th><th># AG</th><th>Total</th><th class='sw'>Pace nat</th><th class='bk'>km/h</th><th class='rn'>Pace cor</th><th>vs anterior</th><th>🌡️</th><th>💨</th></tr>";
+    h+="<div class='overflow'><table><tr><th>Ano</th><th># AG</th><th>Total</th><th class='sw'>Nat</th><th class='sw'>Pace</th><th style='color:var(--tx3)'>T1</th><th class='bk'>Bike</th><th class='bk'>km/h</th><th style='color:var(--tx3)'>T2</th><th class='rn'>Cor</th><th class='rn'>Pace</th><th>vs anterior</th><th>🌡️</th><th>💨</th></tr>";
     var prevT=null;
     ids.forEach(function(id){
       var m=M[id],fin=R[id].filter(function(r){return r[3]===AG&&r[5]});
-      if(!fin.length){h+="<tr><td>"+m.y+"</td><td colspan='7' style='color:var(--tx3)'>sem dados</td></tr>";prevT=null;return}
+      if(!fin.length){h+="<tr><td>"+m.y+"</td><td colspan='12' style='color:var(--tx3)'>sem dados</td></tr>";prevT=null;return}
       fin.sort(function(a,b){return a[5]-b[5]});
       var t=fin.map(function(r){return r[5]}),s=fin.map(function(r){return r[6]}),b=fin.map(function(r){return r[7]}),rn=fin.map(function(r){return r[8]}),t1=fin.map(function(r){return r[9]}),t2=fin.map(function(r){return r[10]});
-      var tv=nth(t,TP),sv2=nth(s,TP),bv=nth(b,TP),rv=nth(rn,TP);
+      var tv=nth(t,TP),sv2=nth(s,TP),bv=nth(b,TP),rv=nth(rn,TP),t1v=nth(t1,TP),t2v=nth(t2,TP);
       var diff="";
       if(prevT){var d=tv-prevT;var sec=Math.abs(d);var mm=Math.floor(sec/60),ss=Math.round(sec%60);
-        diff=d<-30?"<span style='color:var(--rn)'>↓ "+mm+"m"+ss+"s mais rápido</span>":d>30?"<span style='color:#dc2626'>↑ "+mm+"m"+ss+"s mais lento</span>":"≈ estável"}
+        diff=d>30?"<span style='color:var(--rn)'>↓ "+mm+"m"+ss+"s "+L('faster')+"</span>":d<-30?"<span style='color:#dc2626'>↑ "+mm+"m"+ss+"s "+L('slower')+"</span>":"≈ "+L('stable')}
       var w=W[id]||{};
       h+="<tr><td style='font-weight:700'>"+m.y+"</td><td>"+fin.length+"</td>";
       h+="<td class='mono' style='font-weight:700'>"+s2t(tv)+"</td>";
-      h+="<td class='sw'>"+sP(sv2,m.sk)+"</td><td class='bk'>"+bS(bv,m.bk)+"</td><td class='rn'>"+rP(rv,m.rk)+"</td>";
-      h+="<td style='font-size:11px'>"+diff+"</td><td style='font-size:11px'>"+(w.temp||"-")+"°C</td><td style='font-size:11px'>"+(w.vento||"-")+"</td></tr>";
+      h+="<td class='mono sw'>"+s2t(sv2)+"</td><td class='sw'>"+sP(sv2,m.sk)+"</td><td style='color:var(--tx3)'>"+tT(t1v)+"</td><td class='mono bk'>"+s2t(bv)+"</td><td class='bk'>"+bS(bv,m.bk)+"</td><td style='color:var(--tx3)'>"+tT(t2v)+"</td><td class='mono rn'>"+s2t(rv)+"</td><td class='rn'>"+rP(rv,m.rk)+"</td>";
+      if(!window._chartData)window._chartData=[];
+      window._chartData.push({y:m.y,t:tv,s:sv2,b:bv,r:rv});
+      h+="<td style='font-size:13px'>"+diff+"</td><td style='font-size:13px'>"+(w.temp||"-")+"°C</td><td style='font-size:13px'>"+(w.vento||"-")+"</td></tr>";
       prevT=tv;
     });
     h+="</table></div></div>"});
@@ -251,7 +418,7 @@ function rTrends(el){
 function rSim(el){
   var ags=aAgs();if(!AG||AG==="all")AG=ags.indexOf("M35-39")>=0?"M35-39":ags[0];
   var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Simulador de Meta</h2>";
-  h+="<p style='font-size:13px;color:var(--tx2);margin-bottom:14px'>Insira seus tempos por modalidade e veja em que posição você ficaria em cada edição.</p>";
+  h+="<p style='font-size:13px;color:var(--tx2);margin-bottom:14px'>'+L('simSub')+'</p>";
   h+="<div class='card'><div style='display:flex;gap:14px;flex-wrap:wrap;align-items:end'>";
   h+="<div><div class='sl' style='margin-bottom:4px'>Prova</div><select class='sel' style='font-weight:700' onchange=\"window._simCity=this.value;ren()\">";
   Object.keys(SE).forEach(function(c){h+="<option value='"+c+"'"+(window._simCity===c||(!window._simCity&&c===Object.keys(SE)[0])?" selected":"")+">"+c+"</option>"});
@@ -275,8 +442,8 @@ window.runSim=function(){
   window._ss=ss;window._sb=sb;window._sr=sr;window._simRan=true;
   var swimS=parseInput(ss),bikeS=parseInput(sb),runS=parseInput(sr),totalS=swimS+bikeS+runS;
   var el=document.getElementById("simResult");
-  var h="<div class='card' style='margin-top:12px'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:10px'>Resultado da simulação — "+AG+"</div>";
-  h+="<div style='margin-bottom:10px;font-size:14px'>Tempo total estimado: <b class='mono' style='font-size:18px'>"+s2t(totalS)+"</b></div>";
+  var h="<div class='card' style='margin-top:12px'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:10px'>Resultado da simulação — "+AG+"</div>";
+  h+="<div style='margin-bottom:10px;font-size:14px'>'+L('totalEst')+' <b class='mono' style='font-size:18px'>"+s2t(totalS)+"</b></div>";
   h+="<div class='overflow'><table><tr><th>Prova</th><th># na AG</th><th>Sua posição</th><th>Posição nat</th><th>Posição bike</th><th>Posição corrida</th></tr>";
   var simCity=window._simCity||Object.keys(SE)[0];
   var simIds=SE[simCity]||[];
@@ -291,7 +458,66 @@ window.runSim=function(){
     h+="<td style='font-weight:800;font-size:13px'>"+emoji+" "+posT+"º / "+fin.length+"</td>";
     h+="<td class='sw'>"+posS+"º</td><td class='bk'>"+posB+"º</td><td class='rn'>"+posR+"º</td></tr>"});
   h+="</table></div>";
-  h+="<div style='margin-top:8px;font-size:11px;color:var(--tx3)'>Posição = quantos atletas fizeram tempo melhor que o seu + 1. Baseado em dados reais de cada edição.</div></div>";
+  h+="</div>";
+  // Diagnostic - use most recent edition
+  var diagId=simIds[simIds.length-1];
+  var diagFin=R[diagId].filter(function(r){return r[3]===AG&&r[5]});
+  if(diagFin.length>5){
+    diagFin.sort(function(a,b){return a[5]-b[5]});
+    var n=diagFin.length;
+    function posOf(arr,val){var c=0;arr.forEach(function(v){if(v<val)c++});return c+1}
+    var pT=posOf(diagFin.map(function(r){return r[5]}),totalS);
+    var pS=posOf(diagFin.filter(function(r){return r[6]}).map(function(r){return r[6]}),swimS);
+    var pB=posOf(diagFin.filter(function(r){return r[7]}).map(function(r){return r[7]}),bikeS);
+    var pR=posOf(diagFin.filter(function(r){return r[8]}).map(function(r){return r[8]}),runS);
+    var nS=diagFin.filter(function(r){return r[6]}).length;
+    var nB=diagFin.filter(function(r){return r[7]}).length;
+    var nR=diagFin.filter(function(r){return r[8]}).length;
+    // Percentile (lower = better)
+    var pcT=Math.round(pT/n*100),pcS=Math.round(pS/nS*100),pcB=Math.round(pB/nB*100),pcR=Math.round(pR/nR*100);
+    // Find strongest and weakest
+    var mods=[{name:'Natação',pc:pcS,pos:pS,n:nS,c:'var(--sw)'},{name:'Bike',pc:pcB,pos:pB,n:nB,c:'var(--bk)'},{name:'Corrida',pc:pcR,pos:pR,n:nR,c:'var(--rn)'}];
+    mods.sort(function(a,b){return a.pc-b.pc});
+    var best=mods[0],worst=mods[2];
+    
+    h+="<div class='card' style='margin-top:12px'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:12px'>Diagnóstico — "+AG+" ("+M[diagId].c.split(' ')[0]+" "+M[diagId].y+")</div>";
+    h+="<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px'>";
+    // Left: bars
+    h+="<div>";
+    [{name:'Total',pc:pcT,pos:pT,n:n,c:'#1a1a1a'},{name:'Natação',pc:pcS,pos:pS,n:nS,c:'var(--sw)'},{name:'Bike',pc:pcB,pos:pB,n:nB,c:'var(--bk)'},{name:'Corrida',pc:pcR,pos:pR,n:nR,c:'var(--rn)'}].forEach(function(m){
+      var pctBar=Math.max(5,Math.min(95,m.pc));
+      h+="<div style='margin-bottom:12px'>";
+      h+="<div style='display:flex;justify-content:space-between;margin-bottom:4px'><span style='font-size:13px;font-weight:600'>"+m.name+"</span><span style='font-size:13px;font-weight:700;color:"+m.c+"'>"+m.pos+"º / "+m.n+"</span></div>";
+      h+="<div style='background:var(--bg3);border-radius:4px;height:8px;position:relative'><div style='background:"+m.c+";height:100%;border-radius:4px;width:"+pctBar+"%'></div></div>";
+      h+="<div style='font-size:11px;color:var(--tx3);margin-top:2px'>Top "+m.pc+"%</div>";
+      h+="</div>";
+    });
+    h+="</div>";
+    // Right: analysis
+    h+="<div style='display:flex;flex-direction:column;justify-content:center'>";
+    h+="<div class='card' style='border-color:#16a34a44;margin-bottom:8px'><div style='font-size:11px;color:var(--tx3);text-transform:uppercase;margin-bottom:4px'>Ponto forte</div><div style='font-size:16px;font-weight:700;color:"+best.c+"'>"+best.name+"</div><div style='font-size:13px;color:var(--tx2)'>"+best.pos+"º de "+best.n+" — top "+best.pc+"%</div></div>";
+    h+="<div class='card' style='border-color:#dc262644'><div style='font-size:11px;color:var(--tx3);text-transform:uppercase;margin-bottom:4px'>Onde melhorar</div><div style='font-size:16px;font-weight:700;color:"+worst.c+"'>"+worst.name+"</div><div style='font-size:13px;color:var(--tx2)'>"+worst.pos+"º de "+worst.n+" — top "+worst.pc+"%</div>";
+    // How much to improve
+    var tgt=Math.ceil(worst.n*best.pc/100);
+    if(tgt<worst.pos){
+      var tgtTime;
+      var wArr;
+      if(worst.name==='Natação')wArr=diagFin.filter(function(r){return r[6]}).map(function(r){return r[6]}).sort(function(a,b){return a-b});
+      else if(worst.name==='Bike')wArr=diagFin.filter(function(r){return r[7]}).map(function(r){return r[7]}).sort(function(a,b){return a-b});
+      else wArr=diagFin.filter(function(r){return r[8]}).map(function(r){return r[8]}).sort(function(a,b){return a-b});
+      if(tgt>0&&tgt<=wArr.length){
+        var currentTime=worst.name==='Natação'?swimS:worst.name==='Bike'?bikeS:runS;
+        var targetTime=wArr[tgt-1];
+        var diff=currentTime-targetTime;
+        if(diff>0){
+          var dm=Math.floor(diff/60),ds=Math.round(diff%60);
+          h+="<div style='font-size:12px;color:var(--tx2);margin-top:6px'>Se melhorar <b>"+(dm?dm+"m":"")+ds+"s</b> na "+worst.name.toLowerCase()+", iguala seu ponto forte</div>";
+        }
+      }
+    }
+    h+="</div></div>";
+    h+="</div></div>";
+  }
   el.innerHTML=h;
 }
 
