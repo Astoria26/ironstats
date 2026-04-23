@@ -97,20 +97,27 @@ function ren(){
 
 function rHome(el){
   var tot=0;RI.forEach(function(id){tot+=R[id].length});
-  el.innerHTML="<div class='hero'><h1>'+L('heroTitle')+'</h1>"+
-    "<p>'+L('heroSub')+'</p>"+
-    "<div style='display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px'>"+
-    "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--acc)'>"+RI.length+"</div><div class='sl'>Edições</div></div>"+
-    "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--rn)'>"+tot.toLocaleString()+"</div><div class='sl'>Resultados</div></div>"+
-    "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--bk)'>2022-25</div><div class='sl'>Período</div></div></div></div>"+
-    "<div class='feat'>"+
-    "<div class='feat-card' onclick=\"V='races';ren()\"><h3>'+L('races')+'</h3><p>'+(LG==='pt'?'Percursos, altimetria e condições':'Courses, elevation and conditions')+'</p></div>"+
-    "<div class='feat-card' onclick=\"V='results';SR=RI[0];ren()\"><h3>'+L('results')+'</h3><p>'+(LG==='pt'?'Splits, paces e filtro por categoria':'Splits, paces and AG filter')+'</p></div>"+
-    "<div class='feat-card' onclick=\"V='podium';ren()\"><h3>'+L('podium')+'</h3><p>'+(LG==='pt'?'Tempos por posição e modalidade':'Times by position and discipline')+'</p></div>"+
-    "<div class='feat-card' onclick=\"V='compare';ren()\"><h3>'+L('compare')+'</h3><p>'+(LG==='pt'?'Provas e edições lado a lado':'Races and editions side by side')+'</p></div>"+
-    "<div class='feat-card' onclick=\"V='trends';ren()\"><h3>'+L('trends')+'</h3><p>'+(LG==='pt'?'Evolução dos tempos ano a ano':'Year over year time evolution')+'</p></div>"+
-    "<div class='feat-card' onclick=\"V='sim';ren()\"><h3>'+L('sim')+'</h3><p>'+(LG==='pt'?'Preveja sua posição':'Predict your finishing position')+'</p></div></div>"+
-    "";
+  var h="<div class='hero'><h1>"+(LG==="pt"?"Resultados e análise de provas 70.3 no Brasil":"70.3 race results and analysis in Brazil")+"</h1>";
+  h+="<p>"+(LG==="pt"?"Splits por modalidade, comparativo entre edições, evolução histórica e simulador de posição. Dados de 2022 a 2025.":"Splits by discipline, edition comparison, historical trends and position simulator. Data from 2022 to 2025.")+"</p>";
+  h+="<div style='display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px'>";
+  h+="<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--acc)'>"+RI.length+"</div><div class='sl'>"+(LG==="pt"?"Edições":"Editions")+"</div></div>";
+  h+="<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--rn)'>"+tot.toLocaleString()+"</div><div class='sl'>"+(LG==="pt"?"Resultados":"Results")+"</div></div>";
+  h+="<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--bk)'>2022-25</div><div class='sl'>"+(LG==="pt"?"Período":"Period")+"</div></div></div></div>";
+  h+="<div class='feat'>";
+  var cards=[
+    ["races",(LG==="pt"?"Provas":"Races"),(LG==="pt"?"Percursos, altimetria e condições":"Courses, elevation and conditions")],
+    ["results",(LG==="pt"?"Resultados":"Results"),(LG==="pt"?"Splits, paces e filtro por categoria":"Splits, paces and AG filter")],
+    ["podium",(LG==="pt"?"Pódio / AG":"Podium / AG"),(LG==="pt"?"Tempos por posição e modalidade":"Times by position and discipline")],
+    ["compare",(LG==="pt"?"Comparador":"Compare"),(LG==="pt"?"Provas e edições lado a lado":"Races and editions side by side")],
+    ["trends",(LG==="pt"?"Tendências":"Trends"),(LG==="pt"?"Evolução dos tempos ano a ano":"Year over year time evolution")],
+    ["sim",(LG==="pt"?"Simulador":"Simulator"),(LG==="pt"?"Preveja sua posição":"Predict your finishing position")]
+  ];
+  cards.forEach(function(c){
+    var onclick=c[0]==="results"?"V=\'results\';SR=RI[0];ren()":"V=\'"+c[0]+"\';ren()";
+    h+="<div class='feat-card' onclick=\""+onclick+"\"><h3>"+c[1]+"</h3><p>"+c[2]+"</p></div>";
+  });
+  h+="</div>";
+  el.innerHTML=h;
 }
 
 function wxBadge(id){var w=W[id];if(!w)return"";return "<div style='display:flex;gap:4px;flex-wrap:wrap;margin-top:6px'>"+
@@ -134,73 +141,67 @@ function rRaces(el){
   h+="</table></div></div>";
   // Distribution section
   h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Distribuição de tempos</div>";
-  h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap'><span style='font-size:12px;color:var(--tx3)'>Categoria:</span><select class='sel' id='distAG' onchange='renderDist()'><option value='all'>Todos</option></select></div>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center'>";
+  h+="<span style='font-size:12px;color:var(--tx3)'>Categoria:</span><select class='sel' id='distAG' onchange='renderDist()'><option value='all'>Todos</option></select>";
+  h+="<span style='font-size:12px;color:var(--tx3);margin-left:8px'>Ano:</span><select class='sel' id='distYear' onchange='renderDist()'><option value='all'>Todos os anos</option></select>";
+  h+="</div>";
   h+="<div style='display:grid;grid-template-columns:1fr 1fr;gap:12px'>";
   h+="<div style='position:relative;height:220px'><canvas id='distTotal'></canvas></div>";
-  h+="<div style='position:relative;height:220px'><canvas id='distSplits'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distSwim'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distBike'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distRun'></canvas></div>";
   h+="</div></div>";
   el.innerHTML=h;
-  // Populate AG selector
+  // Populate AG and Year selectors
   var distSel=document.getElementById('distAG');
+  var yearSel=document.getElementById('distYear');
   if(distSel){
     var dags=[];
     ids.forEach(function(id){R[id].forEach(function(r){if(r[5]&&r[3]&&dags.indexOf(r[3])<0)dags.push(r[3])})});
     dags.sort();
     dags.forEach(function(ag){var o=document.createElement('option');o.value=ag;o.text=ag;distSel.appendChild(o)});
   }
+  if(yearSel){
+    ids.forEach(function(id){var o=document.createElement('option');o.value=id;o.text=M[id].y;yearSel.appendChild(o)});
+  }
   window._distCity=rCity;
-  renderDist();
+  window._distIds=ids;
+  setTimeout(function(){renderDist()},100);
 }
 
 function renderDist(){
-  var city=window._distCity;if(!city)return;
-  var ids=SE[city];if(!ids)return;
+  var ids=window._distIds;if(!ids)return;
   var ag=document.getElementById('distAG')?document.getElementById('distAG').value:'all';
-  // Merge all years for this city
+  var yr=document.getElementById('distYear')?document.getElementById('distYear').value:'all';
+  var useIds=yr==='all'?ids:[yr];
   var allFin=[];
-  ids.forEach(function(id){
-    R[id].forEach(function(r){
-      if(r[5]&&(ag==='all'||r[3]===ag))allFin.push(r);
-    });
+  useIds.forEach(function(id){
+    if(!R[id])return;
+    R[id].forEach(function(r){if(r[5]&&(ag==='all'||r[3]===ag))allFin.push(r)});
   });
   if(!allFin.length)return;
-  // Build histogram for total time
-  var totals=allFin.map(function(r){return r[5]/60}); // in minutes
-  var minT=Math.floor(Math.min.apply(null,totals)/10)*10;
-  var maxT=Math.ceil(Math.max.apply(null,totals)/10)*10;
-  var bins=[],labels=[];
-  for(var i=minT;i<maxT;i+=10){bins.push(0);labels.push(Math.floor(i/60)+'h'+String(i%60).padStart(2,'0'))}
-  totals.forEach(function(t){var idx=Math.min(Math.floor((t-minT)/10),bins.length-1);if(idx>=0)bins[idx]++});
+  var yrLabel=yr==='all'?'todos os anos':M[yr].y;
   // Destroy old charts
-  try{if(window._distChart1)window._distChart1.destroy()}catch(e){}
-  try{if(window._distChart2)window._distChart2.destroy()}catch(e){}
+  ['_dc1','_dc2','_dc3','_dc4'].forEach(function(k){try{if(window[k])window[k].destroy()}catch(e){}});
+  function makeHist(canvasId,data,label,color,binSize,storeKey,fmtLabel){
+    var cv=document.getElementById(canvasId);if(!cv||!data.length)return;
+    var mn=Math.floor(Math.min.apply(null,data)/binSize)*binSize;
+    var mx=Math.ceil(Math.max.apply(null,data)/binSize)*binSize;
+    var bins=[],labs=[];
+    for(var i=mn;i<mx;i+=binSize){bins.push(0);labs.push(fmtLabel?fmtLabel(i):i+'m')}
+    data.forEach(function(v){var idx=Math.min(Math.floor((v-mn)/binSize),bins.length-1);if(idx>=0)bins[idx]++});
+    window[storeKey]=new Chart(cv,{type:'bar',
+      data:{labels:labs,datasets:[{label:label,data:bins,backgroundColor:color+'44',borderColor:color,borderWidth:1}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:label+' ('+yrLabel+')',font:{size:13}}},scales:{y:{title:{display:true,text:'Atletas'}}}}
+    });
+  }
   try{
-    var ctx1=document.getElementById('distTotal');
-    if(ctx1){
-      window._distChart1=new Chart(ctx1,{type:'bar',
-        data:{labels:labels,datasets:[{label:'Atletas',data:bins,backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Tempo total (todos os anos)',font:{size:13}}},scales:{x:{title:{display:false}},y:{title:{display:true,text:'Atletas'}}}}
-      });
-    }
-    // Splits distribution - overlay 3 histograms
-    var m=M[ids[0]];
-    var sData=allFin.filter(function(r){return r[6]}).map(function(r){return r[6]/60});
-    var bData=allFin.filter(function(r){return r[7]}).map(function(r){return r[7]/60});
-    var rData=allFin.filter(function(r){return r[8]}).map(function(r){return r[8]/60});
-    // Use fixed bins for splits
-    var sBins=[],bBins=[],rBins=[],sLab=[];
-    var sMin=Math.floor(Math.min.apply(null,sData)/5)*5,sMax=Math.ceil(Math.max.apply(null,sData)/5)*5;
-    for(var i=sMin;i<sMax;i+=5){sBins.push(0);sLab.push(i+'m')}
-    sData.forEach(function(t){var idx=Math.min(Math.floor((t-sMin)/5),sBins.length-1);if(idx>=0)sBins[idx]++});
-    var ctx2=document.getElementById('distSplits');
-    if(ctx2){
-      // Show swim distribution  
-      window._distChart2=new Chart(ctx2,{type:'bar',
-        data:{labels:sLab,datasets:[{label:'Natação',data:sBins,backgroundColor:'#0ea5e944',borderColor:'#0ea5e9',borderWidth:1}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top'},title:{display:true,text:'Natação (todos os anos)',font:{size:13}}},scales:{y:{title:{display:true,text:'Atletas'}}}}
-      });
-    }
-  }catch(e){console.log('Dist chart error:',e)}
+    var fmtH=function(m){return Math.floor(m/60)+'h'+String(Math.round(m%60)).padStart(2,'0')};
+    makeHist('distTotal',allFin.map(function(r){return r[5]/60}),'Tempo total','#2563eb',5,'_dc1',fmtH);
+    makeHist('distSwim',allFin.filter(function(r){return r[6]}).map(function(r){return r[6]/60}),'Natação','#0ea5e9',1,'_dc2');
+    makeHist('distBike',allFin.filter(function(r){return r[7]}).map(function(r){return r[7]/60}),'Bike','#ea580c',10,'_dc3',fmtH);
+    makeHist('distRun',allFin.filter(function(r){return r[8]}).map(function(r){return r[8]/60}),'Corrida','#16a34a',5,'_dc4');
+  }catch(e){console.log('Dist error:',e)}
 }
 
 function rResults(el){
@@ -265,10 +266,10 @@ function rPodium(el){
   ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+" ("+raw.filter(function(r){return r[3]===ag&&r[5]}).length+")</option>"});
   h+="</select></div>";
   if(!fin.length){el.innerHTML=h+"<div style='color:var(--tx3);text-align:center;padding:40px'>Sem dados</div>";return}
-  var mc=["var(--gold)","var(--silver)","var(--bronze)"];
+  var mc=["var(--gold)","var(--silver)","var(--bronze)","var(--tx2)","var(--tx2)"];
   h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Pódio — "+AG+"</div>";
-  fin.slice(0,3).forEach(function(a,i){
-    h+="<div style='display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin-bottom:3px;"+(i===0?"background:#fef9c3;border-radius:6px;border:1px solid #fde68a":"")+"'><div style='display:flex;gap:8px;align-items:center'><span style='font-weight:800;font-size:16px;color:"+mc[i]+"'>"+(i+1)+"º</span><div><div style='font-size:12px;font-weight:600'>"+a[0]+"</div></div></div><div style='text-align:right'><div class='mono' style='font-weight:800;font-size:15px'>"+s2t(a[5])+"</div><div style='font-size:11px;color:var(--tx3)'>Nat"+sP(a[6],m.sk)+" Bike"+bS(a[7],m.bk)+" Cor"+rP(a[8],m.rk)+"</div></div></div>"});
+  fin.slice(0,5).forEach(function(a,i){
+    h+="<div style='display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin-bottom:3px;"+(i===0?"background:#fef9c3;border-radius:6px;border:1px solid #fde68a":i<3?"background:var(--bg3);border-radius:6px":"")+"'><div style='display:flex;gap:8px;align-items:center'><span style='font-weight:800;font-size:16px;color:"+mc[i]+"'>"+(i+1)+"º</span><div><div style='font-size:12px;font-weight:600'>"+a[0]+"</div></div></div><div style='text-align:right'><div class='mono' style='font-weight:800;font-size:15px'>"+s2t(a[5])+"</div><div style='font-size:11px;color:var(--tx3)'>Nat"+sP(a[6],m.sk)+" Bike"+bS(a[7],m.bk)+" Cor"+rP(a[8],m.rk)+"</div></div></div>"});
   h+="</div>";
   h+=posTbl(fin,m,"Tempo necessário por posição — "+AG);
   el.innerHTML=h;
@@ -306,73 +307,67 @@ function rCompare(el){
   h+="</table></div></div>";
   // Distribution section
   h+="<div class='card'><div style='font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Distribuição de tempos</div>";
-  h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap'><span style='font-size:12px;color:var(--tx3)'>Categoria:</span><select class='sel' id='distAG' onchange='renderDist()'><option value='all'>Todos</option></select></div>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center'>";
+  h+="<span style='font-size:12px;color:var(--tx3)'>Categoria:</span><select class='sel' id='distAG' onchange='renderDist()'><option value='all'>Todos</option></select>";
+  h+="<span style='font-size:12px;color:var(--tx3);margin-left:8px'>Ano:</span><select class='sel' id='distYear' onchange='renderDist()'><option value='all'>Todos os anos</option></select>";
+  h+="</div>";
   h+="<div style='display:grid;grid-template-columns:1fr 1fr;gap:12px'>";
   h+="<div style='position:relative;height:220px'><canvas id='distTotal'></canvas></div>";
-  h+="<div style='position:relative;height:220px'><canvas id='distSplits'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distSwim'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distBike'></canvas></div>";
+  h+="<div style='position:relative;height:220px'><canvas id='distRun'></canvas></div>";
   h+="</div></div>";
   el.innerHTML=h;
-  // Populate AG selector
+  // Populate AG and Year selectors
   var distSel=document.getElementById('distAG');
+  var yearSel=document.getElementById('distYear');
   if(distSel){
     var dags=[];
     ids.forEach(function(id){R[id].forEach(function(r){if(r[5]&&r[3]&&dags.indexOf(r[3])<0)dags.push(r[3])})});
     dags.sort();
     dags.forEach(function(ag){var o=document.createElement('option');o.value=ag;o.text=ag;distSel.appendChild(o)});
   }
+  if(yearSel){
+    ids.forEach(function(id){var o=document.createElement('option');o.value=id;o.text=M[id].y;yearSel.appendChild(o)});
+  }
   window._distCity=rCity;
-  renderDist();
+  window._distIds=ids;
+  setTimeout(function(){renderDist()},100);
 }
 
 function renderDist(){
-  var city=window._distCity;if(!city)return;
-  var ids=SE[city];if(!ids)return;
+  var ids=window._distIds;if(!ids)return;
   var ag=document.getElementById('distAG')?document.getElementById('distAG').value:'all';
-  // Merge all years for this city
+  var yr=document.getElementById('distYear')?document.getElementById('distYear').value:'all';
+  var useIds=yr==='all'?ids:[yr];
   var allFin=[];
-  ids.forEach(function(id){
-    R[id].forEach(function(r){
-      if(r[5]&&(ag==='all'||r[3]===ag))allFin.push(r);
-    });
+  useIds.forEach(function(id){
+    if(!R[id])return;
+    R[id].forEach(function(r){if(r[5]&&(ag==='all'||r[3]===ag))allFin.push(r)});
   });
   if(!allFin.length)return;
-  // Build histogram for total time
-  var totals=allFin.map(function(r){return r[5]/60}); // in minutes
-  var minT=Math.floor(Math.min.apply(null,totals)/10)*10;
-  var maxT=Math.ceil(Math.max.apply(null,totals)/10)*10;
-  var bins=[],labels=[];
-  for(var i=minT;i<maxT;i+=10){bins.push(0);labels.push(Math.floor(i/60)+'h'+String(i%60).padStart(2,'0'))}
-  totals.forEach(function(t){var idx=Math.min(Math.floor((t-minT)/10),bins.length-1);if(idx>=0)bins[idx]++});
+  var yrLabel=yr==='all'?'todos os anos':M[yr].y;
   // Destroy old charts
-  try{if(window._distChart1)window._distChart1.destroy()}catch(e){}
-  try{if(window._distChart2)window._distChart2.destroy()}catch(e){}
+  ['_dc1','_dc2','_dc3','_dc4'].forEach(function(k){try{if(window[k])window[k].destroy()}catch(e){}});
+  function makeHist(canvasId,data,label,color,binSize,storeKey,fmtLabel){
+    var cv=document.getElementById(canvasId);if(!cv||!data.length)return;
+    var mn=Math.floor(Math.min.apply(null,data)/binSize)*binSize;
+    var mx=Math.ceil(Math.max.apply(null,data)/binSize)*binSize;
+    var bins=[],labs=[];
+    for(var i=mn;i<mx;i+=binSize){bins.push(0);labs.push(fmtLabel?fmtLabel(i):i+'m')}
+    data.forEach(function(v){var idx=Math.min(Math.floor((v-mn)/binSize),bins.length-1);if(idx>=0)bins[idx]++});
+    window[storeKey]=new Chart(cv,{type:'bar',
+      data:{labels:labs,datasets:[{label:label,data:bins,backgroundColor:color+'44',borderColor:color,borderWidth:1}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:label+' ('+yrLabel+')',font:{size:13}}},scales:{y:{title:{display:true,text:'Atletas'}}}}
+    });
+  }
   try{
-    var ctx1=document.getElementById('distTotal');
-    if(ctx1){
-      window._distChart1=new Chart(ctx1,{type:'bar',
-        data:{labels:labels,datasets:[{label:'Atletas',data:bins,backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'Tempo total (todos os anos)',font:{size:13}}},scales:{x:{title:{display:false}},y:{title:{display:true,text:'Atletas'}}}}
-      });
-    }
-    // Splits distribution - overlay 3 histograms
-    var m=M[ids[0]];
-    var sData=allFin.filter(function(r){return r[6]}).map(function(r){return r[6]/60});
-    var bData=allFin.filter(function(r){return r[7]}).map(function(r){return r[7]/60});
-    var rData=allFin.filter(function(r){return r[8]}).map(function(r){return r[8]/60});
-    // Use fixed bins for splits
-    var sBins=[],bBins=[],rBins=[],sLab=[];
-    var sMin=Math.floor(Math.min.apply(null,sData)/5)*5,sMax=Math.ceil(Math.max.apply(null,sData)/5)*5;
-    for(var i=sMin;i<sMax;i+=5){sBins.push(0);sLab.push(i+'m')}
-    sData.forEach(function(t){var idx=Math.min(Math.floor((t-sMin)/5),sBins.length-1);if(idx>=0)sBins[idx]++});
-    var ctx2=document.getElementById('distSplits');
-    if(ctx2){
-      // Show swim distribution  
-      window._distChart2=new Chart(ctx2,{type:'bar',
-        data:{labels:sLab,datasets:[{label:'Natação',data:sBins,backgroundColor:'#0ea5e944',borderColor:'#0ea5e9',borderWidth:1}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top'},title:{display:true,text:'Natação (todos os anos)',font:{size:13}}},scales:{y:{title:{display:true,text:'Atletas'}}}}
-      });
-    }
-  }catch(e){console.log('Dist chart error:',e)}
+    var fmtH=function(m){return Math.floor(m/60)+'h'+String(Math.round(m%60)).padStart(2,'0')};
+    makeHist('distTotal',allFin.map(function(r){return r[5]/60}),'Tempo total','#2563eb',5,'_dc1',fmtH);
+    makeHist('distSwim',allFin.filter(function(r){return r[6]}).map(function(r){return r[6]/60}),'Natação','#0ea5e9',1,'_dc2');
+    makeHist('distBike',allFin.filter(function(r){return r[7]}).map(function(r){return r[7]/60}),'Bike','#ea580c',10,'_dc3',fmtH);
+    makeHist('distRun',allFin.filter(function(r){return r[8]}).map(function(r){return r[8]/60}),'Corrida','#16a34a',5,'_dc4');
+  }catch(e){console.log('Dist error:',e)}
 }
 
 function rTrends(el){
