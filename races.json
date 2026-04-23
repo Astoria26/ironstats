@@ -3,39 +3,223 @@
     "sopaulo": {
       "name": "70.3 São Paulo",
       "city": "São Paulo",
-      "swimKm": 1.9, "bikeKm": 90, "runKm": 21.1,
+      "swimKm": 1.9,
+      "bikeKm": 90,
+      "runKm": 21.1,
       "course": {
         "swimDesc": "Raia da USP · Água doce, calma",
         "bikeDesc": "Av. Marginal Pinheiros / USP · 2 voltas",
         "runDesc": "Campus USP · 2 voltas · Plano",
-        "bikeElev": 380, "runElev": 120,
+        "bikeElev": 380,
+        "runElev": 120,
         "tips": "Calor intenso, pouca sombra. Hidratar muito.",
         "strava": "https://www.strava.com/routes/2965513"
       },
       "editions": {
-        "2022": {"date": "09/11/2022", "temp": 28, "hum": 70, "alt": 760, "chuva": "Parcialmente nublado", "agua": 23, "vento": "NE 12km/h"},
-        "2023": {"date": "17/09/2023", "temp": 26, "hum": 65, "alt": 760, "chuva": "Sol", "agua": 22, "vento": "L 8km/h"},
-        "2024": {"date": "22/09/2024", "temp": 30, "hum": 60, "alt": 760, "chuva": "Sol intenso", "agua": 23, "vento": "SE 10km/h"},
-        "2025": {"date": "21/09/2025", "temp": 28, "hum": 65, "alt": 760, "chuva": "Parcialmente nublado", "agua": 22, "vento": "NE 15km/h"}
+        "2022": {
+          "date": "09/11/2022",
+          "temp": 28,
+          "hum": 70,
+          "alt": 760,
+          "chuva": "Parcialmente nublado",
+          "agua": 23,
+          "vento": "NE 12km/h"
+        },
+        "2023": {
+          "date": "17/09/2023",
+          "temp": 26,
+          "hum": 65,
+          "alt": 760,
+          "chuva": "Sol",
+          "agua": 22,
+          "vento": "L 8km/h"
+        },
+        "2024": {
+          "date": "22/09/2024",
+          "temp": 30,
+          "hum": 60,
+          "alt": 760,
+          "chuva": "Sol intenso",
+          "agua": 23,
+          "vento": "SE 10km/h"
+        },
+        "2025": {
+          "date": "21/09/2025",
+          "temp": 28,
+          "hum": 65,
+          "alt": 760,
+          "chuva": "Parcialmente nublado",
+          "agua": 22,
+          "vento": "NE 15km/h"
+        }
       }
     },
     "riodejaneiro": {
       "name": "70.3 Rio de Janeiro",
       "city": "Rio de Janeiro",
-      "swimKm": 1.9, "bikeKm": 90, "runKm": 21.1,
+      "swimKm": 1.9,
+      "bikeKm": 90,
+      "runKm": 21.1,
       "course": {
         "swimDesc": "Copacabana · Mar aberto, ondulação possível",
         "bikeDesc": "Av. Atlântica → Aterro · 2 voltas · Ondulado",
         "runDesc": "Aterro do Flamengo → Marina da Glória · 3 voltas",
-        "bikeElev": 466, "runElev": 95,
+        "bikeElev": 466,
+        "runElev": 95,
         "tips": "Vento lateral no Aterro. Cenário icônico.",
         "strava": "https://www.strava.com/routes/3253924"
       },
       "editions": {
-        "2022": {"date": "23/10/2022", "temp": 26, "hum": 75, "alt": 5, "chuva": "Nublado", "agua": 21, "vento": "S 18km/h"},
-        "2023": {"date": "09/07/2023", "temp": 22, "hum": 60, "alt": 5, "chuva": "Sol", "agua": 20, "vento": "SE 22km/h"},
-        "2024": {"date": "07/07/2024", "temp": 24, "hum": 65, "alt": 5, "chuva": "Sol", "agua": 20, "vento": "S 15km/h"},
-        "2025": {"date": "10/08/2025", "temp": 23, "hum": 60, "alt": 5, "chuva": "Sol", "agua": 21, "vento": "SO 20km/h"}
+        "2022": {
+          "date": "23/10/2022",
+          "temp": 26,
+          "hum": 75,
+          "alt": 5,
+          "chuva": "Nublado",
+          "agua": 21,
+          "vento": "S 18km/h"
+        },
+        "2023": {
+          "date": "09/07/2023",
+          "temp": 22,
+          "hum": 60,
+          "alt": 5,
+          "chuva": "Sol",
+          "agua": 20,
+          "vento": "SE 22km/h"
+        },
+        "2024": {
+          "date": "07/07/2024",
+          "temp": 24,
+          "hum": 65,
+          "alt": 5,
+          "chuva": "Sol",
+          "agua": 20,
+          "vento": "S 15km/h"
+        },
+        "2025": {
+          "date": "10/08/2025",
+          "temp": 23,
+          "hum": 60,
+          "alt": 5,
+          "chuva": "Sol",
+          "agua": 21,
+          "vento": "SO 20km/h"
+        }
+      }
+    },
+    "florianopolis": {
+      "name": "70.3 Florianópolis",
+      "city": "Florianópolis",
+      "swimKm": 1.9,
+      "bikeKm": 90,
+      "runKm": 21.1,
+      "course": {
+        "swimDesc": "Praia de Jurerê · Mar calmo",
+        "bikeDesc": "Norte da ilha · 2 voltas · Asfalto bom, clima variável",
+        "runDesc": "Jurerê · 2 voltas · Plano",
+        "bikeElev": 420,
+        "runElev": 60,
+        "tips": "Clima pode mudar rápido. Percurso rápido."
+      },
+      "editions": {
+        "2022": {
+          "date": "06/11/2022",
+          "temp": 24,
+          "hum": 70,
+          "alt": 5,
+          "chuva": "Sol",
+          "agua": 22,
+          "vento": "NE 12km/h"
+        },
+        "2023": {
+          "date": "29/10/2023",
+          "temp": 22,
+          "hum": 65,
+          "alt": 5,
+          "chuva": "Parcialmente nublado",
+          "agua": 21,
+          "vento": "S 15km/h"
+        },
+        "2024": {
+          "date": "27/10/2024",
+          "temp": 25,
+          "hum": 60,
+          "alt": 5,
+          "chuva": "Sol",
+          "agua": 22,
+          "vento": "NE 10km/h"
+        },
+        "2025": {
+          "date": "26/10/2025",
+          "temp": 23,
+          "hum": 65,
+          "alt": 5,
+          "chuva": "Sol",
+          "agua": 21,
+          "vento": "SE 14km/h"
+        }
+      }
+    },
+    "brasilia": {
+      "name": "70.3 Brasília",
+      "city": "Brasília",
+      "swimKm": 1.9,
+      "bikeKm": 90,
+      "runKm": 21.1,
+      "course": {
+        "swimDesc": "Lago Paranoá · Água doce, calma",
+        "bikeDesc": "Pontão → rodovias · 2 voltas · Ondulado",
+        "runDesc": "Pontão do Lago Sul · 2 voltas · Plano",
+        "bikeElev": 500,
+        "runElev": 80,
+        "tips": "Altitude 1.100m. Ar seco. Vento no pedal."
+      },
+      "editions": {
+        "2025": {
+          "date": "27/04/2025",
+          "temp": 26,
+          "hum": 45,
+          "alt": 1100,
+          "chuva": "Sol",
+          "agua": 24,
+          "vento": "L 12km/h"
+        }
+      }
+    },
+    "aracaju": {
+      "name": "70.3 Aracaju",
+      "city": "Aracaju",
+      "swimKm": 1.9,
+      "bikeKm": 90,
+      "runKm": 21.1,
+      "course": {
+        "swimDesc": "Foz do Vaza Barris · Água de rio, calma",
+        "bikeDesc": "Rodovia costeira · 2 voltas · Plano",
+        "runDesc": "Orla de Atalaia · 2 voltas · Plano",
+        "bikeElev": 180,
+        "runElev": 40,
+        "tips": "Calor e umidade alta. Percurso plano e rápido."
+      },
+      "editions": {
+        "2024": {
+          "date": "01/12/2024",
+          "temp": 30,
+          "hum": 80,
+          "alt": 5,
+          "chuva": "Sol",
+          "agua": 27,
+          "vento": "SE 10km/h"
+        },
+        "2025": {
+          "date": "30/11/2025",
+          "temp": 31,
+          "hum": 75,
+          "alt": 5,
+          "chuva": "Parcialmente nublado",
+          "agua": 28,
+          "vento": "E 8km/h"
+        }
       }
     }
   }
