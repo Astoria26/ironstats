@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IronStats Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f3ef;--bg2:#fff;--bg3:#f0ede8;--tx:#1a1a1a;--tx2:#5a5a5a;--tx3:#8a8a8a;--bd:#e5e1da;--sw:#0ea5e9;--bk:#ea580c;--rn:#16a34a;--acc:#2563eb;--gold:#b8860b;--silver:#6b7280;--bronze:#a0522d}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
+.hdr{background:var(--bg2);border-bottom:1px solid var(--bd);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.logo{font-size:22px;font-weight:800;color:var(--acc)}.logo span{color:var(--rn)}.sub{font-size:11px;color:var(--tx3);margin-left:8px}
+nav{display:flex;gap:2px;background:var(--bg3);border-radius:8px;padding:3px}
+nav button{padding:7px 12px;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:11px;font-family:inherit;background:transparent;color:var(--tx2);transition:all .2s}
+nav button.on{background:var(--acc);color:#fff}
+.cnt{padding:16px 20px;max-width:1400px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:12px}
+.sel{background:var(--bg2);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:7px 10px;font-family:inherit;font-size:12px;cursor:pointer}
+.stat{background:var(--bg3);border-radius:8px;padding:10px;text-align:center}
+.sv{font-size:17px;font-weight:800;font-family:'Barlow Condensed',sans-serif}
+.sl{font-size:9px;color:var(--tx3);margin-top:2px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{padding:7px 5px;text-align:left;border-bottom:2px solid var(--bd);color:var(--tx3);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;white-space:nowrap;user-select:none}
+td{padding:6px 5px;border-bottom:1px solid var(--bd);white-space:nowrap}tr:hover td{background:var(--bg3)}
+.sw{color:var(--sw)}.bk{color:var(--bk)}.rn{color:var(--rn)}.mono{font-family:'Barlow Condensed',monospace}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700}
+.b-70{background:#eff6ff;color:var(--acc);border:1px solid #bfdbfe}.top3{background:#f0fdf4}
+.back{background:none;border:none;color:var(--acc);cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;padding:0;margin-bottom:12px}
+.overflow{overflow-x:auto}
+.tgl{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg2);cursor:pointer;font-size:11px;font-weight:600;color:var(--tx3);transition:all .15s;font-family:inherit}
+.tgl.on{border-color:var(--acc);background:#eff6ff;color:var(--acc)}
+.hero{text-align:center;padding:36px 20px 24px}.hero h1{font-size:28px;font-weight:800;margin-bottom:6px}.hero p{font-size:14px;color:var(--tx2);max-width:560px;margin:0 auto 20px}
+.feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px}
+.feat-card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;text-align:center}
+.feat-card:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.feat-card .icon{font-size:24px;margin-bottom:8px}.feat-card h3{font-size:13px;font-weight:700;margin-bottom:3px}.feat-card p{font-size:11px;color:var(--tx2)}
+.ci{flex:1;background:var(--bg3);border-radius:8px;padding:8px 10px;min-width:140px}
+.tip{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:8px}
+.wx{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:var(--bg3);border-radius:6px;font-size:11px;color:var(--tx2);margin:2px}
+a{color:var(--acc)}
+.sim-input{background:var(--bg2);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-family:inherit;font-size:14px;width:100px;text-align:center}
+</style></head><body>
+<div class="hdr"><div style="display:flex;align-items:baseline;gap:4px">
+<span class="logo">Iron<span>Stats</span></span><span class="sub">Análise de Ironman 70.3 — Brasil</span>
+</div><nav id="nav"></nav></div>
+<div class="cnt" id="app"></div>
+<script>
+var D=/*DATA_PLACEHOLDER*/;
+var W=/*WEATHER_PLACEHOLDER*/;var CI=/*COURSE_PLACEHOLDER*/;var SE=/*SERIES_PLACEHOLDER*/;
+var M=D.m,R=D.d,RI=Object.keys(M);
+function s2t(s){if(!s||s<=0)return"--:--:--";var h=Math.floor(s/3600),m=Math.floor(s%3600/60),c=Math.floor(s%60);return h+":"+String(m).padStart(2,"0")+":"+String(c).padStart(2,"0")}
+function sP(s,k){if(!s)return"--";var p=s/(k*10);return Math.floor(p/60)+":"+String(Math.round(p%60)).padStart(2,"0")+"/100m"}
+function bS(s,k){if(!s)return"--";return(k/(s/3600)).toFixed(1)+"km/h"}
+function rP(s,k){if(!s)return"--";var p=s/k;return Math.floor(p/60)+":"+String(Math.round(p%60)).padStart(2,"0")+"/km"}
+function tT(s){if(!s||s<=0)return'--';var m=Math.floor(s/60),c=Math.round(s%60);return m+':'+String(c).padStart(2,'0')}
+function nth(a,n){var f=a.filter(function(x){return x&&x>0});if(!f.length||n>f.length)return 0;f.sort(function(x,y){return x-y});return f[Math.min(n-1,f.length-1)]}
+function av(a){var f=a.filter(function(x){return x&&x>0});if(!f.length)return 0;return f.reduce(function(s,v){return s+v},0)/f.length}
+function aAgs(){var o={};RI.forEach(function(id){R[id].forEach(function(r){if(r[5]&&r[3])o[r[3]]=1})});return Object.keys(o).sort()}
+function getCi(id){var c=id.substring(0,2);if(c==="rj"&&parseInt(id.substring(2))<=22)return CI.rj_old;return CI[c]||CI.sp}
+
+var V="home",SR=null,AG="all",SC=5,SD=1,CR=null,TP=5;
+
+function ren(){
+  var tabs=["Home","Provas","Resultados","Pódio/AG","Comparar","Tendências","Simulador"];
+  var views=["home","races","results","podium","compare","trends","sim"];
+  document.getElementById("nav").innerHTML=tabs.map(function(t,i){
+    return "<button class='"+(V===views[i]?"on":"")+"' onclick=\"V='"+views[i]+"';ren()\">"+t+"</button>"
+  }).join("");
+  var a=document.getElementById("app");
+  var fn={home:rHome,races:rRaces,results:rResults,podium:rPodium,compare:rCompare,trends:rTrends,sim:rSim};
+  fn[V](a);
+}
+
+function rHome(el){
+  var tot=0;RI.forEach(function(id){tot+=R[id].length});
+  el.innerHTML="<div class='hero'><h1>Encontre seu ritmo. Escolha sua prova.</h1>"+
+    "<p>Análise completa de Ironman 70.3 no Brasil — tempos por modalidade, comparação entre provas, tendências e simulador de meta.</p>"+
+    "<div style='display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px'>"+
+    "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--acc)'>"+RI.length+"</div><div class='sl'>Edições</div></div>"+
+    "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--rn)'>"+tot.toLocaleString()+"</div><div class='sl'>Resultados</div></div>"+
+    "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--bk)'>2022-25</div><div class='sl'>Período</div></div></div></div>"+
+    "<div class='feat'>"+
+    "<div class='feat-card' onclick=\"V='races';ren()\"><div class='icon'>🏁</div><h3>Provas</h3><p>Percursos, altimetria, clima e Strava</p></div>"+
+    "<div class='feat-card' onclick=\"V='results';SR=RI[0];ren()\"><div class='icon'>📊</div><h3>Resultados</h3><p>Splits, paces e filtro por AG</p></div>"+
+    "<div class='feat-card' onclick=\"V='podium';ren()\"><div class='icon'>🏆</div><h3>Pódio/AG</h3><p>Top posições por modalidade</p></div>"+
+    "<div class='feat-card' onclick=\"V='compare';ren()\"><div class='icon'>⚖️</div><h3>Comparar</h3><p>Provas lado a lado</p></div>"+
+    "<div class='feat-card' onclick=\"V='trends';ren()\"><div class='icon'>📈</div><h3>Tendências</h3><p>Evolução 2022→2025</p></div>"+
+    "<div class='feat-card' onclick=\"V='sim';ren()\"><div class='icon'>🎯</div><h3>Simulador</h3><p>Descubra sua posição prevista</p></div></div>"+
+    "<div class='card' style='text-align:center;font-size:12px;color:var(--tx3)'>Dados via <a href='https://www.coachcox.co.uk/imstats/' target='_blank'>Coach Cox</a> · Clima aproximado via registros históricos</div>";
+}
+
+function wxBadge(id){var w=W[id];if(!w)return"";return "<div style='display:flex;gap:4px;flex-wrap:wrap;margin-top:6px'>"+
+  "<span class='wx'>📅 "+w.date+"</span><span class='wx'>🌡️ "+w.temp+"°C</span><span class='wx'>💧 "+w.hum+"%</span>"+
+  "<span class='wx'>⛰️ "+w.alt+"m</span><span class='wx'>"+w.chuva+"</span><span class='wx'>🏊 água "+w.agua+"°C</span></div>"}
+
+function rRaces(el){
+  var rCity=window._rCity||Object.keys(SE)[0];
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Provas & Percursos</h2>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:14px'>";
+  Object.keys(SE).forEach(function(c){h+="<button class='tgl "+(rCity===c?"on":"")+"' onclick=\"window._rCity='"+c+"';ren()\">"+c+"</button>"});
+  h+="</div>";
+  var ids=SE[rCity],ci=getCi(ids[ids.length-1]);
+  h+="<div class='card'><div style='display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px'>";
+  h+="<div class='ci'><b>🏊</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.swimDesc+"</span></div>";
+  h+="<div class='ci'><b>🚴</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.bikeDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.bikeElev+"m</div>"+(ci.strava?"<a href='"+ci.strava+"' target='_blank' style='font-size:10px'>Strava →</a>":"")+"</div>";
+  h+="<div class='ci'><b>🏃</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.runDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.runElev+"m</div></div></div>";
+  h+="<div class='overflow'><table><tr><th>Ano</th><th>Atletas</th><th>📅 Data</th><th>🌡️ Temp</th><th>💧 Umid.</th><th>⛰️ Alt.</th><th>🏊 Água</th><th>💨 Vento</th><th>Condição</th></tr>";
+  ids.forEach(function(id){var m=M[id],w=W[id]||{};
+    h+="<tr style='cursor:pointer' onclick=\"SR='"+id+"';V='results';ren()\"><td style='font-weight:800;font-size:14px'>"+m.y+"</td><td>"+R[id].length+"</td><td>"+(w.date||"-")+"</td><td>"+(w.temp||"-")+"°C</td><td>"+(w.hum||"-")+"%</td><td>"+(w.alt||"-")+"m</td><td>"+(w.agua||"-")+"°C</td><td>"+(w.vento||"-")+"</td><td>"+(w.chuva||"-")+"</td></tr>"});
+  h+="</table></div></div>";
+  el.innerHTML=h;
+}
+
+function rResults(el){
+  if(!SR)SR=RI[0];var m=M[SR],raw=R[SR],ags=[];
+  raw.forEach(function(r){if(r[3]&&ags.indexOf(r[3])<0)ags.push(r[3])});ags.sort();
+  var f=raw.slice();if(AG!=="all")f=f.filter(function(r){return r[3]===AG});
+  f.sort(function(x,y){var a=x[SC],b=y[SC];if(a==null)return 1;if(b==null)return-1;return SD*(a>b?1:a<b?-1:0)});
+  var fin=raw.filter(function(r){return r[5]});
+  var h="<button class='back' onclick=\"V='races';ren()\">← Provas</button>";
+  h+="<div style='display:flex;align-items:baseline;gap:8px;margin-bottom:10px;flex-wrap:wrap'>";
+  h+="<h2 style='font-size:17px;font-weight:800'>"+m.n+" "+m.y+"</h2>"+wxBadge(SR)+"</div>";
+  h+="<div style='display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap'>";
+  h+="<div class='stat'><div class='sv'>"+fin.length+"</div><div class='sl'>Finalizaram</div></div>";
+  h+="<div class='stat'><div class='sv sw'>"+sP(av(fin.map(function(r){return r[6]})),m.sk)+"</div><div class='sl'>Pace nat médio</div></div>";
+  h+="<div class='stat'><div class='sv bk'>"+bS(av(fin.map(function(r){return r[7]})),m.bk)+"</div><div class='sl'>Vel bike média</div></div>";
+  h+="<div class='stat'><div class='sv rn'>"+rP(av(fin.map(function(r){return r[8]})),m.rk)+"</div><div class='sl'>Pace cor médio</div></div></div>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap'>";
+  h+="<select class='sel' onchange=\"SR=this.value;AG='all';ren()\">";
+  RI.forEach(function(id){h+="<option value='"+id+"'"+(SR===id?" selected":"")+">"+M[id].c.split(" ")[0]+" "+M[id].y+"</option>"});
+  h+="</select><select class='sel' onchange=\"AG=this.value;ren()\">";
+  h+="<option value='all'"+(AG==="all"?" selected":"")+">Todos ("+raw.length+")</option>";
+  ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+"</option>"});
+  h+="</select></div>";
+  h+="<div class='card overflow' style='padding:0'><table><thead><tr>";
+  [["#",4],["Nome",0],["AG",3],["AG#",4],["Total",5],["Nat",6],["Pace",96],["T1",9],["Bike",7],["km/h",97],["T2",10],["Cor",8],["Pace",98]].forEach(function(c){
+    h+="<th onclick=\"SC="+c[1]+";SD=SC==="+c[1]+"?-SD:1;ren()\">"+c[0]+(SC===c[1]?(SD>0?" ↑":" ↓"):"")+"</th>"});
+  h+="</tr></thead><tbody>";
+  f.slice(0,300).forEach(function(a){var t3=a[4]<=3;
+    h+="<tr"+(t3?" class='top3'":"")+"><td style='font-weight:700;"+(t3?"color:var(--rn)":"")+"'>"+a[4]+"</td>";
+    h+="<td style='font-weight:600;max-width:130px;overflow:hidden;text-overflow:ellipsis'>"+a[0]+"</td>";
+    h+="<td>"+a[3]+"</td><td style='font-weight:600;"+(t3?"color:var(--gold)":"")+"'>"+a[4]+"</td>";
+    h+="<td class='mono' style='font-weight:700'>"+s2t(a[5])+"</td>";
+    h+="<td class='mono sw'>"+s2t(a[6])+"</td><td class='sw' style='font-size:10px'>"+sP(a[6],m.sk)+"</td>";
+    h+="<td style='font-size:10px;color:var(--tx3)'>"+tT(a[9])+"</td><td class='mono bk'>"+s2t(a[7])+"</td><td class='bk' style='font-size:10px'>"+bS(a[7],m.bk)+"</td>";
+    h+="<td style='font-size:10px;color:var(--tx3)'>"+tT(a[10])+"</td><td class='mono rn'>"+s2t(a[8])+"</td><td class='rn' style='font-size:10px'>"+rP(a[8],m.rk)+"</td></tr>"});
+  h+="</tbody></table>";
+  if(f.length>300)h+="<div style='padding:8px;text-align:center;color:var(--tx3);font-size:11px'>300 de "+f.length+"</div>";
+  h+="</div>";el.innerHTML=h;
+}
+
+function posTbl(fin,m,title){
+  var t=fin.map(function(r){return r[5]}),s=fin.map(function(r){return r[6]}),b=fin.map(function(r){return r[7]}),rn=fin.map(function(r){return r[8]}),t1=fin.map(function(r){return r[9]}),t2=fin.map(function(r){return r[10]});
+  var ps=[1,3,5,10,20,50],lb=["🥇 1º lugar","🥈 3º lugar","🥉 5º lugar","⭐ 10º lugar","20º lugar","50º lugar"];
+  var h="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>"+title+"</div><div class='overflow'><table>";
+  h+="<tr><th>Posição</th><th>Total</th><th class='sw'>🏊 Nat</th><th class='sw'>Pace</th><th class='bk'>🚴 Bike</th><th class='bk'>km/h</th><th style='color:var(--tx3)'>T1</th><th style='color:var(--tx3)'>T2</th><th class='rn'>🏃 Cor</th><th class='rn'>Pace</th></tr>";
+  ps.forEach(function(p,i){if(p>fin.length)return;
+    h+="<tr><td style='font-weight:600;font-size:12px'>"+lb[i]+"</td><td class='mono' style='font-weight:700'>"+s2t(nth(t,p))+"</td><td class='mono sw'>"+s2t(nth(s,p))+"</td><td class='sw' style='font-size:10px'>"+sP(nth(s,p),m.sk)+"</td><td class='mono bk'>"+s2t(nth(b,p))+"</td><td class='bk' style='font-size:10px'>"+bS(nth(b,p),m.bk)+"</td><td style='color:var(--tx3);font-size:10px'>"+tT(nth(t1,p))+"</td><td style='color:var(--tx3);font-size:10px'>"+tT(nth(t2,p))+"</td><td class='mono rn'>"+s2t(nth(rn,p))+"</td><td class='rn' style='font-size:10px'>"+rP(nth(rn,p),m.rk)+"</td></tr>"});
+  return h+"</table></div></div>";
+}
+
+function rPodium(el){
+  if(!SR)SR=RI[0];var m=M[SR],raw=R[SR],ags=[];
+  raw.forEach(function(r){if(r[3]&&r[5]&&ags.indexOf(r[3])<0)ags.push(r[3])});ags.sort();
+  if(!AG||AG==="all")AG=ags[0]||"M30-34";
+  var fin=raw.filter(function(r){return r[3]===AG&&r[5]});fin.sort(function(a,b){return a[5]-b[5]});
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Pódio & Age Group</h2>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap'>";
+  h+="<select class='sel' onchange=\"SR=this.value;ren()\">";
+  RI.forEach(function(id){h+="<option value='"+id+"'"+(SR===id?" selected":"")+">"+M[id].c.split(' ')[0]+" "+M[id].y+"</option>"});
+  h+="</select><select class='sel' style='font-weight:700' onchange=\"AG=this.value;ren()\">";
+  ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+" ("+raw.filter(function(r){return r[3]===ag&&r[5]}).length+")</option>"});
+  h+="</select></div>";
+  if(!fin.length){el.innerHTML=h+"<div style='color:var(--tx3);text-align:center;padding:40px'>Sem dados</div>";return}
+  var mc=["var(--gold)","var(--silver)","var(--bronze)"];
+  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>🏆 Pódio — "+AG+"</div>";
+  fin.slice(0,3).forEach(function(a,i){
+    h+="<div style='display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin-bottom:3px;"+(i===0?"background:#fef9c3;border-radius:6px;border:1px solid #fde68a":"")+"'><div style='display:flex;gap:8px;align-items:center'><span style='font-weight:800;font-size:16px;color:"+mc[i]+"'>"+(i+1)+"º</span><div><div style='font-size:12px;font-weight:600'>"+a[0]+"</div></div></div><div style='text-align:right'><div class='mono' style='font-weight:800;font-size:15px'>"+s2t(a[5])+"</div><div style='font-size:9px;color:var(--tx3)'>🏊"+sP(a[6],m.sk)+" 🚴"+bS(a[7],m.bk)+" 🏃"+rP(a[8],m.rk)+"</div></div></div>"});
+  h+="</div>";
+  h+=posTbl(fin,m,"📊 Tempo necessário por posição — "+AG);
+  el.innerHTML=h;
+}
+
+function rCompare(el){
+  if(!CR)CR=RI.slice();var ags=aAgs();if(!AG||AG==="all")AG=ags.indexOf("M35-39")>=0?"M35-39":ags[0];
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Comparador</h2>";
+  h+="<div style='display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;align-items:center'>";
+  RI.forEach(function(id){var on=CR.indexOf(id)>=0;
+    h+="<button class='tgl "+(on?"on":"")+"' onclick=\"tCmp('"+id+"');ren()\">"+M[id].c.split(' ')[0]+" "+M[id].y+"</button>"});
+  h+="<select class='sel' style='font-weight:700;margin-left:8px' onchange=\"AG=this.value;ren()\">";
+  h+="<option value='all'"+(AG==="all"?" selected":"")+">Todos</option>";
+  ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+"</option>"});
+  h+="</select></div>";
+  var all=CR.filter(function(id){return RI.indexOf(id)>=0}).map(function(id){
+    var m=M[id],raw=AG==="all"?R[id].filter(function(r){return r[5]}):R[id].filter(function(r){return r[3]===AG&&r[5]});
+    if(!raw.length)return null;raw.sort(function(a,b){return a[5]-b[5]});
+    return{m:m,id:id,n:raw.length,fin:raw,t:raw.map(function(r){return r[5]}),s:raw.map(function(r){return r[6]}),b:raw.map(function(r){return r[7]}),r:raw.map(function(r){return r[8]}),t1:raw.map(function(r){return r[9]}),t2:raw.map(function(r){return r[10]})}
+  }).filter(Boolean);
+  if(!all.length){el.innerHTML=h+"<div style='color:var(--tx3);text-align:center;padding:40px'>Selecione provas</div>";return}
+  var ps=[1,3,5,10,20],lb=["🥇 1º","🥈 3º","🥉 5º","⭐ 10º","20º"];
+  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:10px'>Tempo necessário por posição — "+(AG!=="all"?AG:"Geral")+"</div><div class='overflow'><table><tr><th>Pos</th>";
+  all.forEach(function(r){h+="<th>"+r.m.c.split(' ')[0]+" "+r.m.y+"</th><th class='sw'>🏊</th><th style='color:var(--tx3)'>T1</th><th class='bk'>🚴</th><th style='color:var(--tx3)'>T2</th><th class='rn'>🏃</th>"});
+  h+="</tr>";
+  ps.forEach(function(p,i){h+="<tr><td style='font-weight:600'>"+lb[i]+"</td>";
+    all.forEach(function(r){if(p>r.n){h+="<td colspan='4' style='color:var(--tx3)'>-</td>";return}
+      h+="<td class='mono' style='font-weight:700'>"+s2t(nth(r.t,p))+"</td><td class='sw' style='font-size:10px'>"+sP(nth(r.s,p),r.m.sk)+"</td><td style='font-size:10px;color:var(--tx3)'>"+tT(nth(r.t1,p))+"</td><td class='bk' style='font-size:10px'>"+bS(nth(r.b,p),r.m.bk)+"</td><td style='font-size:10px;color:var(--tx3)'>"+tT(nth(r.t2,p))+"</td><td class='rn' style='font-size:10px'>"+rP(nth(r.r,p),r.m.rk)+"</td>"});
+    h+="</tr>"});
+  h+="</table></div></div>";
+  // Weather comparison
+  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>🌤️ Condições de prova</div><div class='overflow'><table><tr><th>Prova</th><th>Data</th><th>🌡️ Temp</th><th>💧 Umid.</th><th>⛰️ Alt.</th><th>🏊 Água</th><th>Condição</th><th>💨 Vento</th></tr>";
+  all.forEach(function(r){var w=W[r.id]||{};
+    h+="<tr><td style='font-weight:600'>"+r.m.c.split(' ')[0]+" "+r.m.y+"</td><td>"+(w.date||"-")+"</td><td>"+(w.temp||"-")+"°C</td><td>"+(w.hum||"-")+"%</td><td>"+(w.alt||"-")+"m</td><td>"+(w.agua||"-")+"°C</td><td>"+(w.chuva||"-")+"</td></tr>"});
+  h+="</table></div></div>";
+  el.innerHTML=h;
+}
+
+function rTrends(el){
+  var ags=aAgs();if(!AG||AG==="all")AG=ags.indexOf("M35-39")>=0?"M35-39":ags[0];
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>📈 Tendências</h2>";
+  h+="<div style='display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center'>";
+  h+="<select class='sel' style='font-weight:700' onchange=\"AG=this.value;ren()\">";
+  ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+"</option>"});
+  h+="</select><select class='sel' id='tCity' onchange=\"window._tCity=this.value;ren()\">";
+  Object.keys(SE).forEach(function(c){h+="<option value='"+c+"'"+(window._tCity===c||(!window._tCity&&c===Object.keys(SE)[0])?" selected":"")+">"+c+"</option>"});
+  h+="</select><span style='font-size:11px;color:var(--tx3)'>Posição alvo:</span>";
+  [1,3,5,10,20,50].forEach(function(p){h+="<button class='tgl "+(TP===p?"on":"")+"' onclick=\"TP="+p+";ren()\">Top "+p+"</button>"});
+  h+="</div>";
+  var selCity=window._tCity||Object.keys(SE)[0];
+  [selCity].forEach(function(city){
+    var ids=SE[city];
+    h+="<div class='card'><h3 style='font-size:14px;font-weight:700;margin-bottom:10px'>"+city+" — "+AG+" — Top "+TP+"</h3>";
+    h+="<div class='overflow'><table><tr><th>Ano</th><th># AG</th><th>Total</th><th class='sw'>🏊 Pace</th><th class='bk'>🚴 km/h</th><th class='rn'>🏃 Pace</th><th>Δ vs anterior</th><th>🌡️</th><th>💨</th></tr>";
+    var prevT=null;
+    ids.forEach(function(id){
+      var m=M[id],fin=R[id].filter(function(r){return r[3]===AG&&r[5]});
+      if(!fin.length){h+="<tr><td>"+m.y+"</td><td colspan='7' style='color:var(--tx3)'>sem dados</td></tr>";prevT=null;return}
+      fin.sort(function(a,b){return a[5]-b[5]});
+      var t=fin.map(function(r){return r[5]}),s=fin.map(function(r){return r[6]}),b=fin.map(function(r){return r[7]}),rn=fin.map(function(r){return r[8]}),t1=fin.map(function(r){return r[9]}),t2=fin.map(function(r){return r[10]});
+      var tv=nth(t,TP),sv2=nth(s,TP),bv=nth(b,TP),rv=nth(rn,TP);
+      var diff="";
+      if(prevT){var d=tv-prevT;var sec=Math.abs(d);var mm=Math.floor(sec/60),ss=Math.round(sec%60);
+        diff=d<-30?"<span style='color:var(--rn)'>↓ "+mm+"m"+ss+"s mais rápido</span>":d>30?"<span style='color:#dc2626'>↑ "+mm+"m"+ss+"s mais lento</span>":"≈ estável"}
+      var w=W[id]||{};
+      h+="<tr><td style='font-weight:700'>"+m.y+"</td><td>"+fin.length+"</td>";
+      h+="<td class='mono' style='font-weight:700'>"+s2t(tv)+"</td>";
+      h+="<td class='sw'>"+sP(sv2,m.sk)+"</td><td class='bk'>"+bS(bv,m.bk)+"</td><td class='rn'>"+rP(rv,m.rk)+"</td>";
+      h+="<td style='font-size:11px'>"+diff+"</td><td style='font-size:11px'>"+(w.temp||"-")+"°C</td><td style='font-size:11px'>"+(w.vento||"-")+"</td></tr>";
+      prevT=tv;
+    });
+    h+="</table></div></div>"});
+  h+="<div class='tip'>💡 Selecione diferentes posições-alvo para entender como a competitividade evolui em cada faixa.</div>";
+  el.innerHTML=h;
+}
+
+function rSim(el){
+  var ags=aAgs();if(!AG||AG==="all")AG=ags.indexOf("M35-39")>=0?"M35-39":ags[0];
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>🎯 Simulador de Meta</h2>";
+  h+="<p style='font-size:13px;color:var(--tx2);margin-bottom:14px'>Digite seus tempos ou metas e descubra em que posição você ficaria em cada prova.</p>";
+  h+="<div class='card'><div style='display:flex;gap:14px;flex-wrap:wrap;align-items:end'>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>Prova</div><select class='sel' style='font-weight:700' onchange=\"window._simCity=this.value;ren()\">";
+  Object.keys(SE).forEach(function(c){h+="<option value='"+c+"'"+(window._simCity===c||(!window._simCity&&c===Object.keys(SE)[0])?" selected":"")+">"+c+"</option>"});
+  h+="</select></div>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>Categoria</div><select class='sel' style='font-weight:700' onchange=\"AG=this.value;ren()\">";
+  ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+"</option>"});
+  h+="</select></div>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>🏊 Natação (mm:ss)</div><input class='sim-input' id='simS' value='"+(window._ss||"30:00")+"'></div>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>🚴 Bike (h:mm:ss)</div><input class='sim-input' id='simB' value='"+(window._sb||"2:45:00")+"'></div>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>🏃 Corrida (h:mm:ss)</div><input class='sim-input' id='simR' value='"+(window._sr||"1:50:00")+"'></div>";
+  h+="<div><button class='tgl on' onclick='runSim()' style='padding:8px 20px;font-size:13px'>Simular</button></div></div></div>";
+  h+="<div id='simResult'></div>";
+  el.innerHTML=h;
+  if(window._simRan)runSim();
+}
+
+function parseInput(v){var p=v.split(":").map(Number);if(p.length===3)return p[0]*3600+p[1]*60+p[2];if(p.length===2)return p[0]*60+p[1];return 0}
+
+window.runSim=function(){
+  var ss=document.getElementById("simS").value,sb=document.getElementById("simB").value,sr=document.getElementById("simR").value;
+  window._ss=ss;window._sb=sb;window._sr=sr;window._simRan=true;
+  var swimS=parseInput(ss),bikeS=parseInput(sb),runS=parseInput(sr),totalS=swimS+bikeS+runS;
+  var el=document.getElementById("simResult");
+  var h="<div class='card' style='margin-top:12px'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:10px'>Resultado da simulação — "+AG+"</div>";
+  h+="<div style='margin-bottom:10px;font-size:14px'>Tempo total estimado: <b class='mono' style='font-size:18px'>"+s2t(totalS)+"</b></div>";
+  h+="<div class='overflow'><table><tr><th>Prova</th><th># na AG</th><th>Sua posição</th><th>Posição nat</th><th>Posição bike</th><th>Posição corrida</th></tr>";
+  var simCity=window._simCity||Object.keys(SE)[0];
+  var simIds=SE[simCity]||[];
+  simIds.forEach(function(id){
+    var m=M[id],fin=R[id].filter(function(r){return r[3]===AG&&r[5]});
+    if(!fin.length)return;
+    fin.sort(function(a,b){return a[5]-b[5]});
+    var posT=1,posS=1,posB=1,posR=1;
+    fin.forEach(function(a){if(a[5]<totalS)posT++;if(a[6]<swimS)posS++;if(a[7]<bikeS)posB++;if(a[8]<runS)posR++});
+    var emoji="";
+    h+="<tr><td style='font-weight:600'>"+m.c.split(' ')[0]+" "+m.y+"</td><td>"+fin.length+"</td>";
+    h+="<td style='font-weight:800;font-size:13px'>"+emoji+" "+posT+"º / "+fin.length+"</td>";
+    h+="<td class='sw'>"+posS+"º</td><td class='bk'>"+posB+"º</td><td class='rn'>"+posR+"º</td></tr>"});
+  h+="</table></div>";
+  h+="<div style='margin-top:8px;font-size:11px;color:var(--tx3)'>Posição = quantos atletas fizeram tempo melhor que o seu + 1. Baseado em dados reais de cada edição.</div></div>";
+  el.innerHTML=h;
+}
+
+window.tCmp=function(id){if(!CR)CR=RI.slice();var i=CR.indexOf(id);if(i>=0)CR.splice(i,1);else CR.push(id);ren()};
+SR=RI[0];ren();
+</script></body></html>
