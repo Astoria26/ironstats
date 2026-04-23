@@ -37,7 +37,7 @@ a{color:var(--acc)}
 .sim-input{background:var(--bg2);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-family:inherit;font-size:14px;width:100px;text-align:center}
 </style></head><body>
 <div class="hdr"><div style="display:flex;align-items:baseline;gap:4px">
-<span class="logo">Iron<span>Stats</span></span><span class="sub">Análise de Ironman 70.3 — Brasil</span>
+<span class="logo">Iron<span>Stats</span></span><span class="sub">Ironman 70.3 Brasil · Resultados e análise</span>
 </div><nav id="nav"></nav></div>
 <div class="cnt" id="app"></div>
 <script>
@@ -69,38 +69,38 @@ function ren(){
 
 function rHome(el){
   var tot=0;RI.forEach(function(id){tot+=R[id].length});
-  el.innerHTML="<div class='hero'><h1>Encontre seu ritmo. Escolha sua prova.</h1>"+
-    "<p>Análise completa de Ironman 70.3 no Brasil — tempos por modalidade, comparação entre provas, tendências e simulador de meta.</p>"+
+  el.innerHTML="<div class='hero'><h1>Resultados e análise de provas 70.3 no Brasil</h1>"+
+    "<p>Splits por modalidade, comparativo entre edições, evolução histórica e simulador de posição. Dados de 2022 a 2025.</p>"+
     "<div style='display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px'>"+
     "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--acc)'>"+RI.length+"</div><div class='sl'>Edições</div></div>"+
     "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--rn)'>"+tot.toLocaleString()+"</div><div class='sl'>Resultados</div></div>"+
     "<div class='stat' style='min-width:90px'><div class='sv' style='color:var(--bk)'>2022-25</div><div class='sl'>Período</div></div></div></div>"+
     "<div class='feat'>"+
-    "<div class='feat-card' onclick=\"V='races';ren()\"><div class='icon'>🏁</div><h3>Provas</h3><p>Percursos, altimetria, clima e Strava</p></div>"+
-    "<div class='feat-card' onclick=\"V='results';SR=RI[0];ren()\"><div class='icon'>📊</div><h3>Resultados</h3><p>Splits, paces e filtro por AG</p></div>"+
-    "<div class='feat-card' onclick=\"V='podium';ren()\"><div class='icon'>🏆</div><h3>Pódio/AG</h3><p>Top posições por modalidade</p></div>"+
-    "<div class='feat-card' onclick=\"V='compare';ren()\"><div class='icon'>⚖️</div><h3>Comparar</h3><p>Provas lado a lado</p></div>"+
-    "<div class='feat-card' onclick=\"V='trends';ren()\"><div class='icon'>📈</div><h3>Tendências</h3><p>Evolução 2022→2025</p></div>"+
-    "<div class='feat-card' onclick=\"V='sim';ren()\"><div class='icon'>🎯</div><h3>Simulador</h3><p>Descubra sua posição prevista</p></div></div>"+
-    "<div class='card' style='text-align:center;font-size:12px;color:var(--tx3)'>Dados via <a href='https://www.coachcox.co.uk/imstats/' target='_blank'>Coach Cox</a> · Clima aproximado via registros históricos</div>";
+    "<div class='feat-card' onclick=\"V='races';ren()\"><h3>Provas</h3><p>Percursos, altimetria e condições</p></div>"+
+    "<div class='feat-card' onclick=\"V='results';SR=RI[0];ren()\"><h3>Resultados</h3><p>Splits, paces e filtro por categoria</p></div>"+
+    "<div class='feat-card' onclick=\"V='podium';ren()\"><h3>Pódio / AG</h3><p>Tempos por posição e modalidade</p></div>"+
+    "<div class='feat-card' onclick=\"V='compare';ren()\"><h3>Comparador</h3><p>Provas e edições lado a lado</p></div>"+
+    "<div class='feat-card' onclick=\"V='trends';ren()\"><h3>Tendências</h3><p>Evolução dos tempos ano a ano</p></div>"+
+    "<div class='feat-card' onclick=\"V='sim';ren()\"><h3>Simulador</h3><p>Preveja sua posição com base nos seus tempos</p></div></div>"+
+    "";
 }
 
 function wxBadge(id){var w=W[id];if(!w)return"";return "<div style='display:flex;gap:4px;flex-wrap:wrap;margin-top:6px'>"+
-  "<span class='wx'>📅 "+w.date+"</span><span class='wx'>🌡️ "+w.temp+"°C</span><span class='wx'>💧 "+w.hum+"%</span>"+
-  "<span class='wx'>⛰️ "+w.alt+"m</span><span class='wx'>"+w.chuva+"</span><span class='wx'>🏊 água "+w.agua+"°C</span></div>"}
+  "<span class='wx'>"+w.date+"</span><span class='wx'>"+w.temp+"°C</span><span class='wx'>"+w.hum+"%</span>"+
+  "<span class='wx'>"+w.alt+"m</span><span class='wx'>"+w.chuva+"</span><span class='wx'>Água "+w.agua+"°C</span></div>"}
 
 function rRaces(el){
   var rCity=window._rCity||Object.keys(SE)[0];
-  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Provas & Percursos</h2>";
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Provas</h2>";
   h+="<div style='display:flex;gap:8px;margin-bottom:14px'>";
   Object.keys(SE).forEach(function(c){h+="<button class='tgl "+(rCity===c?"on":"")+"' onclick=\"window._rCity='"+c+"';ren()\">"+c+"</button>"});
   h+="</div>";
   var ids=SE[rCity],ci=getCi(ids[ids.length-1]);
   h+="<div class='card'><div style='display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px'>";
-  h+="<div class='ci'><b>🏊</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.swimDesc+"</span></div>";
-  h+="<div class='ci'><b>🚴</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.bikeDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.bikeElev+"m</div>"+(ci.strava?"<a href='"+ci.strava+"' target='_blank' style='font-size:10px'>Strava →</a>":"")+"</div>";
-  h+="<div class='ci'><b>🏃</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.runDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.runElev+"m</div></div></div>";
-  h+="<div class='overflow'><table><tr><th>Ano</th><th>Atletas</th><th>📅 Data</th><th>🌡️ Temp</th><th>💧 Umid.</th><th>⛰️ Alt.</th><th>🏊 Água</th><th>💨 Vento</th><th>Condição</th></tr>";
+  h+="<div class='ci'><b style='color:var(--sw)'>NAT</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.swimDesc+"</span></div>";
+  h+="<div class='ci'><b style='color:var(--bk)'>BIKE</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.bikeDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.bikeElev+"m</div>"+"</div>";
+  h+="<div class='ci'><b style='color:var(--rn)'>COR</b> <span style='font-size:11px;color:var(--tx2)'>"+ci.runDesc+"</span><div style='font-size:11px;font-weight:700;color:var(--bk)'>↗"+ci.runElev+"m</div></div></div>";
+  h+="<div class='overflow'><table><tr><th>Ano</th><th>Atletas</th><th>Data</th><th>Temp</th><th>Umid.</th><th>Alt.</th><th>Água</th><th>Vento</th><th>Condição</th></tr>";
   ids.forEach(function(id){var m=M[id],w=W[id]||{};
     h+="<tr style='cursor:pointer' onclick=\"SR='"+id+"';V='results';ren()\"><td style='font-weight:800;font-size:14px'>"+m.y+"</td><td>"+R[id].length+"</td><td>"+(w.date||"-")+"</td><td>"+(w.temp||"-")+"°C</td><td>"+(w.hum||"-")+"%</td><td>"+(w.alt||"-")+"m</td><td>"+(w.agua||"-")+"°C</td><td>"+(w.vento||"-")+"</td><td>"+(w.chuva||"-")+"</td></tr>"});
   h+="</table></div></div>";
@@ -147,9 +147,9 @@ function rResults(el){
 
 function posTbl(fin,m,title){
   var t=fin.map(function(r){return r[5]}),s=fin.map(function(r){return r[6]}),b=fin.map(function(r){return r[7]}),rn=fin.map(function(r){return r[8]}),t1=fin.map(function(r){return r[9]}),t2=fin.map(function(r){return r[10]});
-  var ps=[1,3,5,10,20,50],lb=["🥇 1º lugar","🥈 3º lugar","🥉 5º lugar","⭐ 10º lugar","20º lugar","50º lugar"];
+  var ps=[1,3,5,10,20,50],lb=["1º lugar","3º lugar","5º lugar","10º lugar","20º lugar","50º lugar"];
   var h="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>"+title+"</div><div class='overflow'><table>";
-  h+="<tr><th>Posição</th><th>Total</th><th class='sw'>🏊 Nat</th><th class='sw'>Pace</th><th class='bk'>🚴 Bike</th><th class='bk'>km/h</th><th style='color:var(--tx3)'>T1</th><th style='color:var(--tx3)'>T2</th><th class='rn'>🏃 Cor</th><th class='rn'>Pace</th></tr>";
+  h+="<tr><th>Posição</th><th>Total</th><th class='sw'>Nat</th><th class='sw'>Pace</th><th class='bk'>Bike</th><th class='bk'>km/h</th><th style='color:var(--tx3)'>T1</th><th style='color:var(--tx3)'>T2</th><th class='rn'>Cor</th><th class='rn'>Pace</th></tr>";
   ps.forEach(function(p,i){if(p>fin.length)return;
     h+="<tr><td style='font-weight:600;font-size:12px'>"+lb[i]+"</td><td class='mono' style='font-weight:700'>"+s2t(nth(t,p))+"</td><td class='mono sw'>"+s2t(nth(s,p))+"</td><td class='sw' style='font-size:10px'>"+sP(nth(s,p),m.sk)+"</td><td class='mono bk'>"+s2t(nth(b,p))+"</td><td class='bk' style='font-size:10px'>"+bS(nth(b,p),m.bk)+"</td><td style='color:var(--tx3);font-size:10px'>"+tT(nth(t1,p))+"</td><td style='color:var(--tx3);font-size:10px'>"+tT(nth(t2,p))+"</td><td class='mono rn'>"+s2t(nth(rn,p))+"</td><td class='rn' style='font-size:10px'>"+rP(nth(rn,p),m.rk)+"</td></tr>"});
   return h+"</table></div></div>";
@@ -169,11 +169,11 @@ function rPodium(el){
   h+="</select></div>";
   if(!fin.length){el.innerHTML=h+"<div style='color:var(--tx3);text-align:center;padding:40px'>Sem dados</div>";return}
   var mc=["var(--gold)","var(--silver)","var(--bronze)"];
-  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>🏆 Pódio — "+AG+"</div>";
+  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Pódio — "+AG+"</div>";
   fin.slice(0,3).forEach(function(a,i){
-    h+="<div style='display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin-bottom:3px;"+(i===0?"background:#fef9c3;border-radius:6px;border:1px solid #fde68a":"")+"'><div style='display:flex;gap:8px;align-items:center'><span style='font-weight:800;font-size:16px;color:"+mc[i]+"'>"+(i+1)+"º</span><div><div style='font-size:12px;font-weight:600'>"+a[0]+"</div></div></div><div style='text-align:right'><div class='mono' style='font-weight:800;font-size:15px'>"+s2t(a[5])+"</div><div style='font-size:9px;color:var(--tx3)'>🏊"+sP(a[6],m.sk)+" 🚴"+bS(a[7],m.bk)+" 🏃"+rP(a[8],m.rk)+"</div></div></div>"});
+    h+="<div style='display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin-bottom:3px;"+(i===0?"background:#fef9c3;border-radius:6px;border:1px solid #fde68a":"")+"'><div style='display:flex;gap:8px;align-items:center'><span style='font-weight:800;font-size:16px;color:"+mc[i]+"'>"+(i+1)+"º</span><div><div style='font-size:12px;font-weight:600'>"+a[0]+"</div></div></div><div style='text-align:right'><div class='mono' style='font-weight:800;font-size:15px'>"+s2t(a[5])+"</div><div style='font-size:9px;color:var(--tx3)'>Nat"+sP(a[6],m.sk)+" Bike"+bS(a[7],m.bk)+" Cor"+rP(a[8],m.rk)+"</div></div></div>"});
   h+="</div>";
-  h+=posTbl(fin,m,"📊 Tempo necessário por posição — "+AG);
+  h+=posTbl(fin,m,"Tempo necessário por posição — "+AG);
   el.innerHTML=h;
 }
 
@@ -193,9 +193,9 @@ function rCompare(el){
     return{m:m,id:id,n:raw.length,fin:raw,t:raw.map(function(r){return r[5]}),s:raw.map(function(r){return r[6]}),b:raw.map(function(r){return r[7]}),r:raw.map(function(r){return r[8]}),t1:raw.map(function(r){return r[9]}),t2:raw.map(function(r){return r[10]})}
   }).filter(Boolean);
   if(!all.length){el.innerHTML=h+"<div style='color:var(--tx3);text-align:center;padding:40px'>Selecione provas</div>";return}
-  var ps=[1,3,5,10,20],lb=["🥇 1º","🥈 3º","🥉 5º","⭐ 10º","20º"];
+  var ps=[1,3,5,10,20],lb=["1º","3º","5º","10º","20º"];
   h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:10px'>Tempo necessário por posição — "+(AG!=="all"?AG:"Geral")+"</div><div class='overflow'><table><tr><th>Pos</th>";
-  all.forEach(function(r){h+="<th>"+r.m.c.split(' ')[0]+" "+r.m.y+"</th><th class='sw'>🏊</th><th style='color:var(--tx3)'>T1</th><th class='bk'>🚴</th><th style='color:var(--tx3)'>T2</th><th class='rn'>🏃</th>"});
+  all.forEach(function(r){h+="<th>"+r.m.c.split(' ')[0]+" "+r.m.y+"</th><th class='sw'>Nat</th><th style='color:var(--tx3)'>T1</th><th class='bk'>Bike</th><th style='color:var(--tx3)'>T2</th><th class='rn'>Cor</th>"});
   h+="</tr>";
   ps.forEach(function(p,i){h+="<tr><td style='font-weight:600'>"+lb[i]+"</td>";
     all.forEach(function(r){if(p>r.n){h+="<td colspan='4' style='color:var(--tx3)'>-</td>";return}
@@ -203,7 +203,7 @@ function rCompare(el){
     h+="</tr>"});
   h+="</table></div></div>";
   // Weather comparison
-  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>🌤️ Condições de prova</div><div class='overflow'><table><tr><th>Prova</th><th>Data</th><th>🌡️ Temp</th><th>💧 Umid.</th><th>⛰️ Alt.</th><th>🏊 Água</th><th>Condição</th><th>💨 Vento</th></tr>";
+  h+="<div class='card'><div style='font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;margin-bottom:8px'>Condições de prova</div><div class='overflow'><table><tr><th>Prova</th><th>Data</th><th>Temp</th><th>Umid.</th><th>Alt.</th><th>Água</th><th>Condição</th><th>Vento</th></tr>";
   all.forEach(function(r){var w=W[r.id]||{};
     h+="<tr><td style='font-weight:600'>"+r.m.c.split(' ')[0]+" "+r.m.y+"</td><td>"+(w.date||"-")+"</td><td>"+(w.temp||"-")+"°C</td><td>"+(w.hum||"-")+"%</td><td>"+(w.alt||"-")+"m</td><td>"+(w.agua||"-")+"°C</td><td>"+(w.chuva||"-")+"</td></tr>"});
   h+="</table></div></div>";
@@ -212,7 +212,7 @@ function rCompare(el){
 
 function rTrends(el){
   var ags=aAgs();if(!AG||AG==="all")AG=ags.indexOf("M35-39")>=0?"M35-39":ags[0];
-  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>📈 Tendências</h2>";
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Tendências</h2>";
   h+="<div style='display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center'>";
   h+="<select class='sel' style='font-weight:700' onchange=\"AG=this.value;ren()\">";
   ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+"</option>"});
@@ -225,7 +225,7 @@ function rTrends(el){
   [selCity].forEach(function(city){
     var ids=SE[city];
     h+="<div class='card'><h3 style='font-size:14px;font-weight:700;margin-bottom:10px'>"+city+" — "+AG+" — Top "+TP+"</h3>";
-    h+="<div class='overflow'><table><tr><th>Ano</th><th># AG</th><th>Total</th><th class='sw'>🏊 Pace</th><th class='bk'>🚴 km/h</th><th class='rn'>🏃 Pace</th><th>Δ vs anterior</th><th>🌡️</th><th>💨</th></tr>";
+    h+="<div class='overflow'><table><tr><th>Ano</th><th># AG</th><th>Total</th><th class='sw'>Pace nat</th><th class='bk'>km/h</th><th class='rn'>Pace cor</th><th>vs anterior</th><th>🌡️</th><th>💨</th></tr>";
     var prevT=null;
     ids.forEach(function(id){
       var m=M[id],fin=R[id].filter(function(r){return r[3]===AG&&r[5]});
@@ -244,14 +244,14 @@ function rTrends(el){
       prevT=tv;
     });
     h+="</table></div></div>"});
-  h+="<div class='tip'>💡 Selecione diferentes posições-alvo para entender como a competitividade evolui em cada faixa.</div>";
+  
   el.innerHTML=h;
 }
 
 function rSim(el){
   var ags=aAgs();if(!AG||AG==="all")AG=ags.indexOf("M35-39")>=0?"M35-39":ags[0];
-  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>🎯 Simulador de Meta</h2>";
-  h+="<p style='font-size:13px;color:var(--tx2);margin-bottom:14px'>Digite seus tempos ou metas e descubra em que posição você ficaria em cada prova.</p>";
+  var h="<h2 style='font-size:17px;font-weight:700;margin-bottom:12px'>Simulador de Meta</h2>";
+  h+="<p style='font-size:13px;color:var(--tx2);margin-bottom:14px'>Insira seus tempos por modalidade e veja em que posição você ficaria em cada edição.</p>";
   h+="<div class='card'><div style='display:flex;gap:14px;flex-wrap:wrap;align-items:end'>";
   h+="<div><div class='sl' style='margin-bottom:4px'>Prova</div><select class='sel' style='font-weight:700' onchange=\"window._simCity=this.value;ren()\">";
   Object.keys(SE).forEach(function(c){h+="<option value='"+c+"'"+(window._simCity===c||(!window._simCity&&c===Object.keys(SE)[0])?" selected":"")+">"+c+"</option>"});
@@ -259,9 +259,9 @@ function rSim(el){
   h+="<div><div class='sl' style='margin-bottom:4px'>Categoria</div><select class='sel' style='font-weight:700' onchange=\"AG=this.value;ren()\">";
   ags.forEach(function(ag){h+="<option value='"+ag+"'"+(AG===ag?" selected":"")+">"+ag+"</option>"});
   h+="</select></div>";
-  h+="<div><div class='sl' style='margin-bottom:4px'>🏊 Natação (mm:ss)</div><input class='sim-input' id='simS' value='"+(window._ss||"30:00")+"'></div>";
-  h+="<div><div class='sl' style='margin-bottom:4px'>🚴 Bike (h:mm:ss)</div><input class='sim-input' id='simB' value='"+(window._sb||"2:45:00")+"'></div>";
-  h+="<div><div class='sl' style='margin-bottom:4px'>🏃 Corrida (h:mm:ss)</div><input class='sim-input' id='simR' value='"+(window._sr||"1:50:00")+"'></div>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>Natação (mm:ss)</div><input class='sim-input' id='simS' value='"+(window._ss||"30:00")+"'></div>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>Bike (h:mm:ss)</div><input class='sim-input' id='simB' value='"+(window._sb||"2:45:00")+"'></div>";
+  h+="<div><div class='sl' style='margin-bottom:4px'>Corrida (h:mm:ss)</div><input class='sim-input' id='simR' value='"+(window._sr||"1:50:00")+"'></div>";
   h+="<div><button class='tgl on' onclick='runSim()' style='padding:8px 20px;font-size:13px'>Simular</button></div></div></div>";
   h+="<div id='simResult'></div>";
   el.innerHTML=h;
